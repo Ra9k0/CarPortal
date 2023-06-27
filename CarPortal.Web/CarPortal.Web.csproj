@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-CarPortal.Web-fa2269a9-1653-4aa6-8b1d-6174f315e37f</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.13" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.13" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.13" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CarPortal.Common\CarPortal.Common.csproj" />
+    <ProjectReference Include="..\CarPortal.Data\CarPortal.Data.csproj" />
+    <ProjectReference Include="..\CarPortal.Web.ViewModels\CarPortal.Web.ViewModels.csproj" />
+  </ItemGroup>
+
+</Project>

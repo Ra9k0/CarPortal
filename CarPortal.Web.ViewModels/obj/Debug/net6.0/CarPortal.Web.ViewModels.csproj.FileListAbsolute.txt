@@ -1,0 +1,12 @@
+C:\Users\rstam\source\repos\CarPortal\CarPortal.Web.ViewModels\bin\Debug\net6.0\CarPortal.Web.ViewModels.deps.json
+C:\Users\rstam\source\repos\CarPortal\CarPortal.Web.ViewModels\bin\Debug\net6.0\CarPortal.Web.ViewModels.dll
+C:\Users\rstam\source\repos\CarPortal\CarPortal.Web.ViewModels\bin\Debug\net6.0\CarPortal.Web.ViewModels.pdb
+C:\Users\rstam\source\repos\CarPortal\CarPortal.Web.ViewModels\obj\Debug\net6.0\CarPortal.Web.ViewModels.csproj.AssemblyReference.cache
+C:\Users\rstam\source\repos\CarPortal\CarPortal.Web.ViewModels\obj\Debug\net6.0\CarPortal.Web.ViewModels.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rstam\source\repos\CarPortal\CarPortal.Web.ViewModels\obj\Debug\net6.0\CarPortal.Web.ViewModels.AssemblyInfoInputs.cache
+C:\Users\rstam\source\repos\CarPortal\CarPortal.Web.ViewModels\obj\Debug\net6.0\CarPortal.Web.ViewModels.AssemblyInfo.cs
+C:\Users\rstam\source\repos\CarPortal\CarPortal.Web.ViewModels\obj\Debug\net6.0\CarPortal.Web.ViewModels.csproj.CoreCompileInputs.cache
+C:\Users\rstam\source\repos\CarPortal\CarPortal.Web.ViewModels\obj\Debug\net6.0\CarPortal.Web.ViewModels.dll
+C:\Users\rstam\source\repos\CarPortal\CarPortal.Web.ViewModels\obj\Debug\net6.0\refint\CarPortal.Web.ViewModels.dll
+C:\Users\rstam\source\repos\CarPortal\CarPortal.Web.ViewModels\obj\Debug\net6.0\CarPortal.Web.ViewModels.pdb
+C:\Users\rstam\source\repos\CarPortal\CarPortal.Web.ViewModels\obj\Debug\net6.0\ref\CarPortal.Web.ViewModels.dll
