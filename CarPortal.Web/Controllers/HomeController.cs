@@ -1,20 +1,32 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using CarPortal.Services.Interfaces;
 using CarPortal.Web.ViewModels.Home;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CarPortal.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
 
-        public HomeController(ILogger<HomeController> logger)
-        {
+		private readonly IHomeService homeService;
 
-        }
+		public HomeController(IHomeService homeService)
+		{
+			this.homeService = homeService;
+		}
 
-        public IActionResult Index()
+		[AllowAnonymous]
+        public async Task<IActionResult> Index()
         {
-            return View();
+	        IEnumerable<OfferViewModel> offer = new List<OfferViewModel>();
+
+			if (User.Identity.IsAuthenticated)
+	        {
+				offer = await homeService.GetOffersAsync(Guid.Parse(GetUserId()));
+			}
+
+	        return View(offer);
         }
 
 

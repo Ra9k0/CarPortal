@@ -17,7 +17,7 @@ namespace CarPortal.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.13")
+                .HasAnnotation("ProductVersion", "6.0.18")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -91,6 +91,23 @@ namespace CarPortal.Data.Migrations
                     b.HasIndex("RegionId");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("3ba0e94f-d15f-4911-9bd0-e10e9d89397f"),
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "f54eb0d2-8be3-4663-92c6-8676c6ca8dba",
+                            Email = "ceca@lepa.sr",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "CECA@LEPA.SR",
+                            NormalizedUserName = "CECA@LEPA.SR",
+                            PhoneNumberConfirmed = false,
+                            RegionId = 1,
+                            TwoFactorEnabled = false,
+                            UserName = "ceca@lepa.sr"
+                        });
                 });
 
             modelBuilder.Entity("CarPortal.Data.Models.Car", b =>
@@ -100,9 +117,6 @@ namespace CarPortal.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
 
                     b.Property<int>("ColorId")
                         .HasColumnType("int");
@@ -122,8 +136,6 @@ namespace CarPortal.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
-
                     b.HasIndex("ColorId");
 
                     b.HasIndex("ConditionId");
@@ -133,6 +145,35 @@ namespace CarPortal.Data.Migrations
                     b.HasIndex("ModelId");
 
                     b.ToTable("Cars");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ColorId = 1,
+                            ConditionId = 1,
+                            EngineTypeId = 1,
+                            ManufactureYear = 2021,
+                            ModelId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            ColorId = 5,
+                            ConditionId = 2,
+                            EngineTypeId = 2,
+                            ManufactureYear = 2006,
+                            ModelId = 6
+                        },
+                        new
+                        {
+                            Id = 3,
+                            ColorId = 3,
+                            ConditionId = 3,
+                            EngineTypeId = 3,
+                            ManufactureYear = 2000,
+                            ModelId = 3
+                        });
                 });
 
             modelBuilder.Entity("CarPortal.Data.Models.Category", b =>
@@ -161,7 +202,7 @@ namespace CarPortal.Data.Migrations
                         new
                         {
                             Id = 2,
-                            Name = "Jeeps"
+                            Name = "SUVs"
                         },
                         new
                         {
@@ -186,6 +227,108 @@ namespace CarPortal.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Colors");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Black"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "White"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Silver"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Gray"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Red"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Blue"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Brown"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Green"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Yellow"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Orange"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "Purple"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Name = "Pink"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Name = "Gold"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Name = "Beige"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Name = "Bronze"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Name = "Copper"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Name = "Maroon"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Name = "Navy"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Name = "Turquoise"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Name = "Teal"
+                        });
                 });
 
             modelBuilder.Entity("CarPortal.Data.Models.Condition", b =>
@@ -204,6 +347,23 @@ namespace CarPortal.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Conditions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "New"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Used"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "For parts"
+                        });
                 });
 
             modelBuilder.Entity("CarPortal.Data.Models.EngineType", b =>
@@ -222,6 +382,71 @@ namespace CarPortal.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("EngineTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Type = "Petrol"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Type = "Diesel"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Type = "Electric"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Type = "Hybrid"
+                        });
+                });
+
+            modelBuilder.Entity("CarPortal.Data.Models.Image", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<Guid>("OfferId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("PhotoPath")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OfferId");
+
+                    b.ToTable("Images");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            OfferId = new Guid("ecc6f335-d9d0-4a1b-bb97-3a8e44ffe3aa"),
+                            PhotoPath = "OfferImages/test1.jpeg"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            OfferId = new Guid("a754b9a5-01b2-4661-bee3-eaf37e717c36"),
+                            PhotoPath = "OfferImages/test2.jpg"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            OfferId = new Guid("87745040-aaf7-426e-a211-d86d80085213"),
+                            PhotoPath = "OfferImages/test3.jpg"
+                        });
                 });
 
             modelBuilder.Entity("CarPortal.Data.Models.Make", b =>
@@ -420,36 +645,31 @@ namespace CarPortal.Data.Migrations
                         new
                         {
                             Id = 36,
-                            Name = "Skoda"
-                        },
-                        new
-                        {
-                            Id = 37,
                             Name = "Smart"
                         },
                         new
                         {
-                            Id = 38,
+                            Id = 37,
                             Name = "Subaru"
                         },
                         new
                         {
-                            Id = 39,
+                            Id = 38,
                             Name = "Suzuki"
                         },
                         new
                         {
-                            Id = 40,
+                            Id = 39,
                             Name = "Tesla"
                         },
                         new
                         {
-                            Id = 41,
+                            Id = 40,
                             Name = "Toyota"
                         },
                         new
                         {
-                            Id = 42,
+                            Id = 41,
                             Name = "Volkswagen"
                         });
                 });
@@ -480,6 +700,428 @@ namespace CarPortal.Data.Migrations
                     b.HasIndex("MakeId");
 
                     b.ToTable("Models");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CategoryId = 1,
+                            MakeId = 2,
+                            Name = "Giulia Quadrifoglio"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CategoryId = 1,
+                            MakeId = 2,
+                            Name = "155 Q4"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CategoryId = 1,
+                            MakeId = 2,
+                            Name = "159"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CategoryId = 1,
+                            MakeId = 3,
+                            Name = "DBS Volante"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CategoryId = 1,
+                            MakeId = 3,
+                            Name = "DB11"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CategoryId = 1,
+                            MakeId = 4,
+                            Name = "TT"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CategoryId = 2,
+                            MakeId = 4,
+                            Name = "Q7"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CategoryId = 2,
+                            MakeId = 4,
+                            Name = "Q8"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CategoryId = 1,
+                            MakeId = 4,
+                            Name = "A3"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CategoryId = 1,
+                            MakeId = 4,
+                            Name = "A4"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            CategoryId = 1,
+                            MakeId = 4,
+                            Name = "A6"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            CategoryId = 1,
+                            MakeId = 4,
+                            Name = "S3"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            CategoryId = 1,
+                            MakeId = 4,
+                            Name = "S4"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            CategoryId = 1,
+                            MakeId = 4,
+                            Name = "S6"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            CategoryId = 1,
+                            MakeId = 4,
+                            Name = "RS3"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            CategoryId = 1,
+                            MakeId = 4,
+                            Name = "RS4"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            CategoryId = 1,
+                            MakeId = 4,
+                            Name = "RS6"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            CategoryId = 1,
+                            MakeId = 5,
+                            Name = "Continental GT"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            CategoryId = 1,
+                            MakeId = 5,
+                            Name = "Mulsanne"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            CategoryId = 1,
+                            MakeId = 6,
+                            Name = "M2"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            CategoryId = 1,
+                            MakeId = 6,
+                            Name = "M3"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            CategoryId = 1,
+                            MakeId = 6,
+                            Name = "M4"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            CategoryId = 1,
+                            MakeId = 6,
+                            Name = "M5"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            CategoryId = 1,
+                            MakeId = 6,
+                            Name = "M6"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            CategoryId = 1,
+                            MakeId = 6,
+                            Name = "M8"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            CategoryId = 2,
+                            MakeId = 6,
+                            Name = "X1"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            CategoryId = 2,
+                            MakeId = 6,
+                            Name = "X2"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            CategoryId = 2,
+                            MakeId = 6,
+                            Name = "X3"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            CategoryId = 2,
+                            MakeId = 6,
+                            Name = "X4"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            CategoryId = 2,
+                            MakeId = 6,
+                            Name = "X5"
+                        },
+                        new
+                        {
+                            Id = 31,
+                            CategoryId = 2,
+                            MakeId = 6,
+                            Name = "X6"
+                        },
+                        new
+                        {
+                            Id = 32,
+                            CategoryId = 2,
+                            MakeId = 6,
+                            Name = "X7"
+                        },
+                        new
+                        {
+                            Id = 33,
+                            CategoryId = 1,
+                            MakeId = 7,
+                            Name = "C1"
+                        },
+                        new
+                        {
+                            Id = 34,
+                            CategoryId = 1,
+                            MakeId = 7,
+                            Name = "C2"
+                        },
+                        new
+                        {
+                            Id = 35,
+                            CategoryId = 1,
+                            MakeId = 7,
+                            Name = "C3"
+                        },
+                        new
+                        {
+                            Id = 36,
+                            CategoryId = 1,
+                            MakeId = 7,
+                            Name = "C4"
+                        },
+                        new
+                        {
+                            Id = 37,
+                            CategoryId = 2,
+                            MakeId = 8,
+                            Name = "Sandero"
+                        },
+                        new
+                        {
+                            Id = 38,
+                            CategoryId = 2,
+                            MakeId = 8,
+                            Name = "Duster"
+                        },
+                        new
+                        {
+                            Id = 39,
+                            CategoryId = 2,
+                            MakeId = 9,
+                            Name = "7 CROSSBACK"
+                        },
+                        new
+                        {
+                            Id = 40,
+                            CategoryId = 1,
+                            MakeId = 9,
+                            Name = "5LS"
+                        },
+                        new
+                        {
+                            Id = 41,
+                            CategoryId = 1,
+                            MakeId = 10,
+                            Name = "488"
+                        },
+                        new
+                        {
+                            Id = 42,
+                            CategoryId = 1,
+                            MakeId = 10,
+                            Name = "Portofino"
+                        },
+                        new
+                        {
+                            Id = 43,
+                            CategoryId = 1,
+                            MakeId = 10,
+                            Name = "458 Italia"
+                        },
+                        new
+                        {
+                            Id = 44,
+                            CategoryId = 1,
+                            MakeId = 11,
+                            Name = "Punto"
+                        },
+                        new
+                        {
+                            Id = 45,
+                            CategoryId = 1,
+                            MakeId = 11,
+                            Name = "500"
+                        },
+                        new
+                        {
+                            Id = 46,
+                            CategoryId = 1,
+                            MakeId = 12,
+                            Name = "Fiesta"
+                        },
+                        new
+                        {
+                            Id = 47,
+                            CategoryId = 1,
+                            MakeId = 12,
+                            Name = "Mustang"
+                        },
+                        new
+                        {
+                            Id = 48,
+                            CategoryId = 1,
+                            MakeId = 13,
+                            Name = "Sivic"
+                        },
+                        new
+                        {
+                            Id = 49,
+                            CategoryId = 1,
+                            MakeId = 13,
+                            Name = "Pilot"
+                        },
+                        new
+                        {
+                            Id = 50,
+                            CategoryId = 1,
+                            MakeId = 14,
+                            Name = "Elantra"
+                        },
+                        new
+                        {
+                            Id = 51,
+                            CategoryId = 2,
+                            MakeId = 14,
+                            Name = "Tucson"
+                        },
+                        new
+                        {
+                            Id = 52,
+                            CategoryId = 1,
+                            MakeId = 15,
+                            Name = "Q50"
+                        },
+                        new
+                        {
+                            Id = 53,
+                            CategoryId = 2,
+                            MakeId = 15,
+                            Name = "QX50"
+                        },
+                        new
+                        {
+                            Id = 54,
+                            CategoryId = 1,
+                            MakeId = 16,
+                            Name = "F-TYPE"
+                        },
+                        new
+                        {
+                            Id = 55,
+                            CategoryId = 1,
+                            MakeId = 16,
+                            Name = "XF"
+                        },
+                        new
+                        {
+                            Id = 56,
+                            CategoryId = 2,
+                            MakeId = 16,
+                            Name = "F-PACE"
+                        },
+                        new
+                        {
+                            Id = 57,
+                            CategoryId = 2,
+                            MakeId = 17,
+                            Name = "Compass"
+                        },
+                        new
+                        {
+                            Id = 58,
+                            CategoryId = 2,
+                            MakeId = 17,
+                            Name = "Cherokee"
+                        },
+                        new
+                        {
+                            Id = 59,
+                            CategoryId = 1,
+                            MakeId = 18,
+                            Name = "K5"
+                        },
+                        new
+                        {
+                            Id = 60,
+                            CategoryId = 2,
+                            MakeId = 18,
+                            Name = "Sportage"
+                        });
                 });
 
             modelBuilder.Entity("CarPortal.Data.Models.Offer", b =>
@@ -492,7 +1134,9 @@ namespace CarPortal.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2023, 7, 3, 21, 34, 11, 30, DateTimeKind.Utc).AddTicks(8368));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -501,6 +1145,9 @@ namespace CarPortal.Data.Migrations
 
                     b.Property<Guid>("OwnerId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -514,6 +1161,38 @@ namespace CarPortal.Data.Migrations
                     b.HasIndex("OwnerId");
 
                     b.ToTable("Offers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("ecc6f335-d9d0-4a1b-bb97-3a8e44ffe3aa"),
+                            CarId = 1,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Experience the epitome of automotive innovation with our brand new car. With its captivating design, advanced technology, and unparalleled performance, this vehicle sets new standards in the world of automobiles. Get ready to embark on a thrilling journey like never before.",
+                            OwnerId = new Guid("3ba0e94f-d15f-4911-9bd0-e10e9d89397f"),
+                            Price = 20000m,
+                            Title = "Test1"
+                        },
+                        new
+                        {
+                            Id = new Guid("a754b9a5-01b2-4661-bee3-eaf37e717c36"),
+                            CarId = 2,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Experience the epitome of automotive innovation with our brand new car. With its captivating design, advanced technology, and unparalleled performance, this vehicle sets new standards in the world of automobiles. Get ready to embark on a thrilling journey like never before.",
+                            OwnerId = new Guid("3ba0e94f-d15f-4911-9bd0-e10e9d89397f"),
+                            Price = 2000m,
+                            Title = "Test2"
+                        },
+                        new
+                        {
+                            Id = new Guid("87745040-aaf7-426e-a211-d86d80085213"),
+                            CarId = 3,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "Experience the epitome of automotive innovation with our brand new car. With its captivating design, advanced technology, and unparalleled performance, this vehicle sets new standards in the world of automobiles. Get ready to embark on a thrilling journey like never before.",
+                            OwnerId = new Guid("3ba0e94f-d15f-4911-9bd0-e10e9d89397f"),
+                            Price = 200m,
+                            Title = "Test3"
+                        });
                 });
 
             modelBuilder.Entity("CarPortal.Data.Models.Region", b =>
@@ -532,6 +1211,148 @@ namespace CarPortal.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Regions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Blagoevgrad"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Burgas"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Dobrich"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Gabrovo"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Grad Sofia"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Khaskoro"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Kurdzhali"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Kyustendil"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Lovech"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Montana"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "Pazardzhik"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Name = "Pernik"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Name = "Pleven"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Name = "Plovdiv"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Name = "Razgrad"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Name = "Ruse"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Name = "Shumen"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Name = "Silistra"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Name = "Sliven"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Name = "Smolyan"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Name = "Sofia"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Name = "Stara Zagora"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Name = "Turgorishte"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Name = "Varna"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Name = "Veliko Turnovo"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Name = "Vidin"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Name = "Vratsa"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            Name = "Yambol"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>
@@ -682,12 +1503,6 @@ namespace CarPortal.Data.Migrations
 
             modelBuilder.Entity("CarPortal.Data.Models.Car", b =>
                 {
-                    b.HasOne("CarPortal.Data.Models.Category", "Category")
-                        .WithMany("Cars")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("CarPortal.Data.Models.Color", "Color")
                         .WithMany("Cars")
                         .HasForeignKey("ColorId")
@@ -709,10 +1524,8 @@ namespace CarPortal.Data.Migrations
                     b.HasOne("CarPortal.Data.Models.Model", "Model")
                         .WithMany("Cars")
                         .HasForeignKey("ModelId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Category");
 
                     b.Navigation("Color");
 
@@ -721,6 +1534,17 @@ namespace CarPortal.Data.Migrations
                     b.Navigation("EngineType");
 
                     b.Navigation("Model");
+                });
+
+            modelBuilder.Entity("CarPortal.Data.Models.Image", b =>
+                {
+                    b.HasOne("CarPortal.Data.Models.Offer", "Offer")
+                        .WithMany("Images")
+                        .HasForeignKey("OfferId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Offer");
                 });
 
             modelBuilder.Entity("CarPortal.Data.Models.Model", b =>
@@ -814,8 +1638,6 @@ namespace CarPortal.Data.Migrations
 
             modelBuilder.Entity("CarPortal.Data.Models.Category", b =>
                 {
-                    b.Navigation("Cars");
-
                     b.Navigation("Models");
                 });
 
@@ -842,6 +1664,11 @@ namespace CarPortal.Data.Migrations
             modelBuilder.Entity("CarPortal.Data.Models.Model", b =>
                 {
                     b.Navigation("Cars");
+                });
+
+            modelBuilder.Entity("CarPortal.Data.Models.Offer", b =>
+                {
+                    b.Navigation("Images");
                 });
 
             modelBuilder.Entity("CarPortal.Data.Models.Region", b =>

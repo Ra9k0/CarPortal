@@ -1,6 +1,9 @@
 using CarPortal.Data;
 using CarPortal.Data.Models;
+using CarPortal.Services;
+using CarPortal.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace CarPortal.Web
 {
@@ -19,13 +22,20 @@ namespace CarPortal.Web
 
             builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
                 {
-                    options.SignIn.RequireConfirmedAccount = true;
+                    options.SignIn.RequireConfirmedAccount = false;
+                    options.Password.RequireDigit = false;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequireUppercase = false;
+                    options.Password.RequireLowercase = false;
                 })
                 .AddEntityFrameworkStores<CarPortalDbContext>();
             
             builder.Services.AddControllersWithViews();
 
-            var app = builder.Build();
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IHomeService, HomeService>();
+
+			var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

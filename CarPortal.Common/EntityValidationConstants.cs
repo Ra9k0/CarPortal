@@ -61,5 +61,11 @@ namespace CarPortal.Common
             public const int DescriptionMinLength = 100;
             public const int DescriptionMaxLength = 1000;
         }
+
+        public static class Image
+        {
+            public const int PathMinLength = 1;
+            public const int PathMaxLength = 256;
+        }
     }
 }

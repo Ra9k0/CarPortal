@@ -9,6 +9,7 @@ namespace CarPortal.Data.Models
         public Offer()
         {
             Id = Guid.NewGuid();
+            Images = new HashSet<Image>();
         }
 
         [Key]
@@ -17,6 +18,9 @@ namespace CarPortal.Data.Models
         [Required]
         [StringLength(TitleMaxLength)]
         public string Title { get; set; } = null!;
+
+        [Required]
+        public decimal Price { get; set; }
 
         [Required]
         [StringLength(DescriptionMaxLength)]
@@ -33,5 +37,7 @@ namespace CarPortal.Data.Models
         public ApplicationUser Owner { get; set; } = null!;
 
         public DateTime CreatedOn { get; set; }
+
+        public ICollection<Image> Images { get; set; }
     }
 }

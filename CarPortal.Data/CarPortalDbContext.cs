@@ -31,10 +31,13 @@ namespace CarPortal.Data
 
         public DbSet<Offer> Offers { get; set; } = null!;
 
+        public DbSet<Image> Images { get; set; } = null!;
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Car>().HasOne(e => e.Model)
-                .WithMany(x => x.Cars).Metadata.DeleteBehavior = DeleteBehavior.Restrict;
+            builder.Entity<Offer>()
+                .Property(e => e.CreatedOn)
+                .HasDefaultValue(DateTime.UtcNow);
 
             Assembly configAssembly = Assembly.GetAssembly(typeof(CarPortalDbContext)) ??
                                       Assembly.GetExecutingAssembly();

@@ -14,11 +14,6 @@ namespace CarPortal.Data.Models
 
         public Model Model { get; set; } = null!;
 
-        [ForeignKey(nameof(Category))]
-        public int CategoryId { get; set; }
-
-        public Category Category { get; set; } = null!;
-
         [ForeignKey(nameof(Color))]
         public int ColorId { get; set; }
 

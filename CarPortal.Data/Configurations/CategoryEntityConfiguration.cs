@@ -27,7 +27,7 @@ namespace CarPortal.Data.Configurations
             category = new Category()
             {
                 Id = 2,
-                Name = "Jeeps"
+                Name = "SUVs"
             };
             categories.Add(category);
 

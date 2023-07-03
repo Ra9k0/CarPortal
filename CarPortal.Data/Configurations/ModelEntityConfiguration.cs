@@ -13,10 +13,10 @@ namespace CarPortal.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Model> builder)
         {
-            throw new NotImplementedException();
+            builder.HasData(SeedModels());
         }
 
-        private Model[] seedModels()
+        private Model[] SeedModels()
         {
             ICollection<Model> models = new HashSet<Model>();
 
@@ -319,11 +319,267 @@ namespace CarPortal.Data.Configurations
             model = new Model()
             {
                 Id = 33,
-                Name = "",
+                Name = "C1",
                 CategoryId = 1,
-                MakeId = 7
+                MakeId = 7,
             };
             models.Add(model);
+
+            model = new Model()
+            {
+                Id = 34,
+                Name = "C2",
+                CategoryId = 1,
+                MakeId = 7,
+            };
+            models.Add(model);
+
+            model = new Model()
+            {
+                Id = 35,
+                Name = "C3",
+                CategoryId = 1,
+                MakeId = 7,
+            };
+            models.Add(model);
+
+            model = new Model()
+            {
+                Id = 36,
+                Name = "C4",
+                CategoryId = 1,
+                MakeId = 7,
+            };
+            models.Add(model);
+
+            //Dacia---------------------
+            model = new Model()
+            {
+                Id = 37,
+                Name = "Sandero",
+                CategoryId = 2,
+                MakeId = 8,
+            };
+            models.Add(model);
+
+            model = new Model()
+            {
+                Id = 38,
+                Name = "Duster",
+                CategoryId = 2,
+                MakeId = 8,
+            };
+            models.Add(model);
+
+            //DS---------------------
+            model = new Model()
+            {
+                Id = 39,
+                Name = "7 CROSSBACK",
+                CategoryId = 2,
+                MakeId = 9,
+            };
+            models.Add(model);
+
+            model = new Model()
+            {
+                Id = 40,
+                Name = "5LS",
+                CategoryId = 1,
+                MakeId = 9,
+            };
+            models.Add(model);
+
+            //Ferrari---------------------
+            model = new Model()
+            {
+                Id = 41,
+                Name = "488",
+                CategoryId = 1,
+                MakeId = 10,
+            };
+            models.Add(model);
+
+            model = new Model()
+            {
+                Id = 42,
+                Name = "Portofino",
+                CategoryId = 1,
+                MakeId = 10,
+            };
+            models.Add(model);
+
+            model = new Model()
+            {
+                Id = 43,
+                Name = "458 Italia",
+                CategoryId = 1,
+                MakeId = 10,
+            };
+            models.Add(model);
+
+            //Fiat---------------------
+            model = new Model()
+            {
+                Id = 44,
+                Name = "Punto",
+                CategoryId = 1,
+                MakeId = 11,
+            };
+            models.Add(model);
+
+            model = new Model()
+            {
+                Id = 45,
+                Name = "500",
+                CategoryId = 1,
+                MakeId = 11,
+            };
+            models.Add(model);
+
+            //Ford---------------------
+            model = new Model()
+            {
+                Id = 46,
+                Name = "Fiesta",
+                CategoryId = 1,
+                MakeId = 12,
+            };
+            models.Add(model);
+
+            model = new Model()
+            {
+                Id = 47,
+                Name = "Mustang",
+                CategoryId = 1,
+                MakeId = 12,
+            };
+            models.Add(model);
+
+            //Honda---------------------
+            model = new Model()
+            {
+                Id = 48,
+                Name = "Sivic",
+                CategoryId = 1,
+                MakeId = 13,
+            };
+            models.Add(model);
+
+            model = new Model()
+            {
+                Id = 49,
+                Name = "Pilot",
+                CategoryId = 1,
+                MakeId = 13,
+            };
+            models.Add(model);
+
+            //Hyundai---------------------
+            model = new Model()
+            {
+                Id = 50,
+                Name = "Elantra",
+                CategoryId = 1,
+                MakeId = 14,
+            };
+            models.Add(model);
+            
+            model = new Model()
+            {
+                Id = 51,
+                Name = "Tucson",
+                CategoryId = 2,
+                MakeId = 14,
+            };
+            models.Add(model);
+
+            //Infiniti---------------------
+            model = new Model()
+            {
+                Id = 52,
+                Name = "Q50",
+                CategoryId = 1,
+                MakeId = 15,
+            };
+            models.Add(model);
+
+            model = new Model()
+            {
+                Id = 53,
+                Name = "QX50",
+                CategoryId = 2,
+                MakeId = 15,
+            };
+            models.Add(model);
+
+            //Jaguar---------------------
+            model = new Model()
+            {
+                Id = 54,
+                Name = "F-TYPE",
+                CategoryId = 1,
+                MakeId = 16,
+            };
+            models.Add(model);
+
+            model = new Model()
+            {
+                Id = 55,
+                Name = "XF",
+                CategoryId = 1,
+                MakeId = 16,
+            };
+            models.Add(model);
+
+            model = new Model()
+            {
+                Id = 56,
+                Name = "F-PACE",
+                CategoryId = 2,
+                MakeId = 16,
+            };
+            models.Add(model);
+
+            //Jeep---------------------
+            model = new Model()
+            {
+                Id = 57,
+                Name = "Compass",
+                CategoryId = 2,
+                MakeId = 17,
+            };
+            models.Add(model);
+
+            model = new Model()
+            {
+                Id = 58,
+                Name = "Cherokee",
+                CategoryId = 2,
+                MakeId = 17,
+            };
+            models.Add(model);
+
+            //Kia---------------------
+            model = new Model()
+            {
+                Id = 59,
+                Name = "K5",
+                CategoryId = 1,
+                MakeId = 18,
+            };
+            models.Add(model);
+
+            model = new Model()
+            {
+                Id = 60,
+                Name = "Sportage",
+                CategoryId = 2,
+                MakeId = 18,
+            };
+            models.Add(model);
+
+
 
             return models.ToArray();
         }

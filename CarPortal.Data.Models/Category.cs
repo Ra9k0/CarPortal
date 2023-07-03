@@ -7,7 +7,6 @@ namespace CarPortal.Data.Models
     {
         public Category()
         {
-            Cars = new HashSet<Car>();
             Models = new HashSet<Model>();
         }
 
@@ -17,8 +16,6 @@ namespace CarPortal.Data.Models
         [Required]
         [MaxLength(NameMaxLength)]
         public string Name { get; set; } = null!;
-
-        public ICollection<Car> Cars { get; set; }
 
         public ICollection<Model> Models { get; set; }
     }

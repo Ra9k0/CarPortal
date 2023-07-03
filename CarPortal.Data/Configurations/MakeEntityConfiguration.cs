@@ -265,41 +265,34 @@ namespace CarPortal.Data.Configurations
             make = new Make()
             {
                 Id = 36,
-                Name = "Skoda"
-            };
-            makes.Add(make);
-
-            make = new Make()
-            {
-                Id = 37,
                 Name = "Smart"
             };
             makes.Add(make);
 
             make = new Make()
             {
-                Id = 38,
+                Id = 37,
                 Name = "Subaru"
             };
             makes.Add(make);
 
             make = new Make()
             {
-                Id = 39,
+                Id = 38,
                 Name = "Suzuki"
             };
             makes.Add(make);
 
             make = new Make()
             {
-                Id = 40,
+                Id = 39,
                 Name = "Tesla"
             };
             makes.Add(make);
 
             make = new Make()
             {
-                Id = 41,
+                Id = 40,
                 Name = "Toyota"
             };
             makes.Add(make);
@@ -307,7 +300,7 @@ namespace CarPortal.Data.Configurations
 
             make = new Make()
             {
-                Id = 42,
+                Id = 41,
                 Name = "Volkswagen"
             };
             makes.Add(make);

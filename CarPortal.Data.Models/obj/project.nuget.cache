@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0YB2g0D6+JX+T9Bhn/01oClvYbD7P1BjzpHO9JdjDEdh7/qRoTcGLS/GxaTMSxf/ovTfUkCV39Y6Yn3wjf/JlA==",
+  "dgSpecHash": "sOeEu9MAslg9Bd4mJZQeeiDZAgLk98db8zVBtimwKkhqrtsoqSb38od9qrEaWk4SwbcHtwNy/WUrpt558pv4zA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\rstam\\source\\repos\\CarPortal\\CarPortal.Data.Models\\CarPortal.Data.Models.csproj",
+  "projectFilePath": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Data.Models\\CarPortal.Data.Models.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rstam\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.13\\microsoft.aspnetcore.cryptography.internal.6.0.13.nupkg.sha512",
     "C:\\Users\\rstam\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.13\\microsoft.aspnetcore.cryptography.keyderivation.6.0.13.nupkg.sha512",

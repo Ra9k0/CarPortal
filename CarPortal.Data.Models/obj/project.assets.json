@@ -840,11 +840,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rstam\\source\\repos\\CarPortal\\CarPortal.Data.Models\\CarPortal.Data.Models.csproj",
+      "projectUniqueName": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Data.Models\\CarPortal.Data.Models.csproj",
       "projectName": "CarPortal.Data.Models",
-      "projectPath": "C:\\Users\\rstam\\source\\repos\\CarPortal\\CarPortal.Data.Models\\CarPortal.Data.Models.csproj",
+      "projectPath": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Data.Models\\CarPortal.Data.Models.csproj",
       "packagesPath": "C:\\Users\\rstam\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rstam\\source\\repos\\CarPortal\\CarPortal.Data.Models\\obj\\",
+      "outputPath": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Data.Models\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\rstam\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -861,8 +861,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\rstam\\source\\repos\\CarPortal\\CarPortal.Common\\CarPortal.Common.csproj": {
-              "projectPath": "C:\\Users\\rstam\\source\\repos\\CarPortal\\CarPortal.Common\\CarPortal.Common.csproj"
+            "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Common\\CarPortal.Common.csproj": {
+              "projectPath": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Common\\CarPortal.Common.csproj"
             }
           }
         }

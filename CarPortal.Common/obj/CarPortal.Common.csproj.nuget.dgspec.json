@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rstam\\source\\repos\\CarPortal\\CarPortal.Common\\CarPortal.Common.csproj": {}
+    "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Common\\CarPortal.Common.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rstam\\source\\repos\\CarPortal\\CarPortal.Common\\CarPortal.Common.csproj": {
+    "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Common\\CarPortal.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rstam\\source\\repos\\CarPortal\\CarPortal.Common\\CarPortal.Common.csproj",
+        "projectUniqueName": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Common\\CarPortal.Common.csproj",
         "projectName": "CarPortal.Common",
-        "projectPath": "C:\\Users\\rstam\\source\\repos\\CarPortal\\CarPortal.Common\\CarPortal.Common.csproj",
+        "projectPath": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Common\\CarPortal.Common.csproj",
         "packagesPath": "C:\\Users\\rstam\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rstam\\source\\repos\\CarPortal\\CarPortal.Common\\obj\\",
+        "outputPath": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Common\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\rstam\\AppData\\Roaming\\NuGet\\NuGet.Config",
