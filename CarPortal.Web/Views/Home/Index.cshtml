@@ -1,7 +1,8 @@
-﻿@{
+﻿@using CarPortal.Services.Interfaces
+
+@{
     ViewData["Title"] = "Home Page";
 }
-
 
 @model IEnumerable<OfferViewModel>
 
@@ -9,13 +10,23 @@
 	.card:hover{
 		box-shadow : -1px 9px 40px -12px #808080;
 	}
+	.img-fluid{
+		width: 1500px;
+		height: auto;
+	}
 </style>
+
+<img src="photos/Untitled design.png" class="img-fluid" alt="Responsive image">
+
 @if (User.Identity.IsAuthenticated)
 {
+<div class="alert alert-secondary" role="alert">
+  Vehicles in region @ViewBag.UserRegion!
+</div>
 	<div class="row">
 		@foreach (var item in Model)
 		{
-			<div class="card" style="width: 20em; margin: 10px;">
+			<div class="card" style="width: 20em; margin: 60px;">
 				<img src="@item.Images.First().PhotoPath" class="card-img-top" />
 				<div class="card-body">
 					<div class="card-title">

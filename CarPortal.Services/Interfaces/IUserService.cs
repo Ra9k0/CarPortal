@@ -1,4 +1,5 @@
-﻿using CarPortal.Web.ViewModels.User;
+﻿using CarPortal.Data.Models;
+using CarPortal.Web.ViewModels.User;
 
 namespace CarPortal.Services.Interfaces
 {

@@ -85,8 +85,9 @@ namespace CarPortal.Web.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             [Required]
-            [Display(Name = "Region")]
+            [Display(Name = "RegionId")]
             public int RegionId { get; set; }
+
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used

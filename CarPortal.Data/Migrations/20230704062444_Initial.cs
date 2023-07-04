@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CarPortal.Data.Migrations
 {
-    public partial class Intitial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -317,7 +317,7 @@ namespace CarPortal.Data.Migrations
                     Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     CarId = table.Column<int>(type: "int", nullable: false),
                     OwnerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 7, 3, 20, 6, 15, 914, DateTimeKind.Utc).AddTicks(2997))
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 7, 4, 6, 24, 43, 657, DateTimeKind.Utc).AddTicks(9227))
                 },
                 constraints: table =>
                 {
@@ -514,7 +514,7 @@ namespace CarPortal.Data.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "RegionId", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { new Guid("3ba0e94f-d15f-4911-9bd0-e10e9d89397f"), 0, "776598b8-cb40-4154-9168-641976e71cbf", "ceca@lepa.sr", false, false, null, "CECA@LEPA.SR", "CECA@LEPA.SR", null, null, false, 1, null, false, "ceca@lepa.sr" });
+                values: new object[] { new Guid("3ba0e94f-d15f-4911-9bd0-e10e9d89397f"), 0, "53142987-5248-498a-8376-a60fba1d58f4", "ceca@lepa.sr", false, false, null, "CECA@LEPA.SR", "CECA@LEPA.SR", null, null, false, 1, null, false, "ceca@lepa.sr" });
 
             migrationBuilder.InsertData(
                 table: "Models",
@@ -623,17 +623,17 @@ namespace CarPortal.Data.Migrations
             migrationBuilder.InsertData(
                 table: "Images",
                 columns: new[] { "Id", "OfferId", "PhotoPath" },
-                values: new object[] { 1, new Guid("ecc6f335-d9d0-4a1b-bb97-3a8e44ffe3aa"), "~/OfferImages/test1.jpeg" });
+                values: new object[] { 1, new Guid("ecc6f335-d9d0-4a1b-bb97-3a8e44ffe3aa"), "OfferImages/test1.jpeg" });
 
             migrationBuilder.InsertData(
                 table: "Images",
                 columns: new[] { "Id", "OfferId", "PhotoPath" },
-                values: new object[] { 2, new Guid("a754b9a5-01b2-4661-bee3-eaf37e717c36"), "~/OfferImages/test2.jpg" });
+                values: new object[] { 2, new Guid("a754b9a5-01b2-4661-bee3-eaf37e717c36"), "OfferImages/test2.jpg" });
 
             migrationBuilder.InsertData(
                 table: "Images",
                 columns: new[] { "Id", "OfferId", "PhotoPath" },
-                values: new object[] { 3, new Guid("87745040-aaf7-426e-a211-d86d80085213"), "~/OfferImages/test3.jpg" });
+                values: new object[] { 3, new Guid("87745040-aaf7-426e-a211-d86d80085213"), "OfferImages/test3.jpg" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

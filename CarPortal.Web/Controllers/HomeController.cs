@@ -3,6 +3,9 @@ using System.Diagnostics;
 using CarPortal.Services.Interfaces;
 using CarPortal.Web.ViewModels.Home;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using CarPortal.Data.Models;
+using System.Security.Cryptography;
 
 namespace CarPortal.Web.Controllers
 {
@@ -10,21 +13,27 @@ namespace CarPortal.Web.Controllers
     {
 
 		private readonly IHomeService homeService;
+        private readonly UserManager<ApplicationUser> userManager;
 
-		public HomeController(IHomeService homeService)
+        public HomeController(IHomeService homeService, UserManager<ApplicationUser> userManager)
 		{
 			this.homeService = homeService;
+            this.userManager = userManager;
 		}
 
 		[AllowAnonymous]
         public async Task<IActionResult> Index()
         {
 	        IEnumerable<OfferViewModel> offer = new List<OfferViewModel>();
-
-			if (User.Identity.IsAuthenticated)
-	        {
-				offer = await homeService.GetOffersAsync(Guid.Parse(GetUserId()));
-			}
+            if (User.Identity.IsAuthenticated)
+            {
+                ApplicationUser? user = await homeService.GetApplicationUserAsync(Guid.Parse(GetUserId()));
+                offer = await homeService.GetOffersAsync(Guid.Parse(GetUserId()));
+                if (user != null)
+                {
+                    ViewBag.UserRegion = homeService.GetRegionAsync(user.RegionId).Result.Name;
+                }
+            }
 
 	        return View(offer);
         }

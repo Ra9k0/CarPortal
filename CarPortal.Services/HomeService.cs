@@ -30,15 +30,23 @@ namespace CarPortal.Services
 						CreatedOn = of.CreatedOn,
 						Description = of.Description,
 						Title = of.Title
-					}).Take(5).ToListAsync();
+					}).Take(3).OrderByDescending(of=>of.CreatedOn).ToListAsync();
 		}
 		 
-		private async Task<ApplicationUser?> GetApplicationUserAsync(Guid id)
+		public async Task<ApplicationUser?> GetApplicationUserAsync(Guid id)
 		{
 			ApplicationUser? user = await dbContext.Users.FirstOrDefaultAsync(u => u.Id == id);
 			
 			return user;
 			
 		}
-	}
+
+        public async Task<Region?> GetRegionAsync(int id)
+        {
+            Region? region = await dbContext.Regions.FirstOrDefaultAsync(u => u.Id == id);
+
+            return region;
+
+        }
+    }
 }

@@ -19,7 +19,8 @@ namespace CarPortal.Web.ViewModels.Home
 
 		public DateTime CreatedOn { get; set; }
 
-		public ICollection<Image> Images { get; set; }
+		public ICollection<Image> Images { get; set; } = null!;
 
-	}
+
+    }
 }
