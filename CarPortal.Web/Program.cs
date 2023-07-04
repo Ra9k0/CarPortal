@@ -34,6 +34,7 @@ namespace CarPortal.Web
 
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IHomeService, HomeService>();
+            builder.Services.AddScoped<IAddOfferService, AddOfferService>();
 
 			var app = builder.Build();
 

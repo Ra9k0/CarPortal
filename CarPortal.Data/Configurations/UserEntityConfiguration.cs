@@ -28,6 +28,8 @@ namespace CarPortal.Data.Configurations
                 UserName = "ceca@lepa.sr",
                 NormalizedUserName = "CECA@LEPA.SR",
                 RegionId = 1,
+                FirstName = "Ceca",
+                LastName = "Lepa"
             };
 
             return user;

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarPortal.Data.Migrations
 {
     [DbContext(typeof(CarPortalDbContext))]
-    [Migration("20230704062444_Initial")]
-    partial class Initial
+    [Migration("20230704123115_FirstAndLastName")]
+    partial class FirstAndLastName
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -43,6 +43,16 @@ namespace CarPortal.Data.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -99,9 +109,11 @@ namespace CarPortal.Data.Migrations
                         {
                             Id = new Guid("3ba0e94f-d15f-4911-9bd0-e10e9d89397f"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "53142987-5248-498a-8376-a60fba1d58f4",
+                            ConcurrencyStamp = "8396ddb2-2418-43fc-a1c7-6e84e850a91f",
                             Email = "ceca@lepa.sr",
                             EmailConfirmed = false,
+                            FirstName = "Ceca",
+                            LastName = "Lepa",
                             LockoutEnabled = false,
                             NormalizedEmail = "CECA@LEPA.SR",
                             NormalizedUserName = "CECA@LEPA.SR",
@@ -1138,7 +1150,7 @@ namespace CarPortal.Data.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 7, 4, 6, 24, 43, 657, DateTimeKind.Utc).AddTicks(9227));
+                        .HasDefaultValue(new DateTime(2023, 7, 4, 12, 31, 14, 525, DateTimeKind.Utc).AddTicks(7111));
 
                     b.Property<string>("Description")
                         .IsRequired()

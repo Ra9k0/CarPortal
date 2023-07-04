@@ -317,7 +317,7 @@ namespace CarPortal.Data.Migrations
                     Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     CarId = table.Column<int>(type: "int", nullable: false),
                     OwnerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 7, 4, 6, 24, 43, 657, DateTimeKind.Utc).AddTicks(9227))
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 7, 4, 11, 57, 58, 502, DateTimeKind.Utc).AddTicks(1985))
                 },
                 constraints: table =>
                 {
@@ -514,7 +514,7 @@ namespace CarPortal.Data.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "RegionId", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { new Guid("3ba0e94f-d15f-4911-9bd0-e10e9d89397f"), 0, "53142987-5248-498a-8376-a60fba1d58f4", "ceca@lepa.sr", false, false, null, "CECA@LEPA.SR", "CECA@LEPA.SR", null, null, false, 1, null, false, "ceca@lepa.sr" });
+                values: new object[] { new Guid("3ba0e94f-d15f-4911-9bd0-e10e9d89397f"), 0, "3d166fc4-95a4-4a7a-9844-e177f3f54af2", "ceca@lepa.sr", false, false, null, "CECA@LEPA.SR", "CECA@LEPA.SR", null, null, false, 1, null, false, "ceca@lepa.sr" });
 
             migrationBuilder.InsertData(
                 table: "Models",

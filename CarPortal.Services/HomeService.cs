@@ -29,7 +29,10 @@ namespace CarPortal.Services
 						Price = of.Price,
 						CreatedOn = of.CreatedOn,
 						Description = of.Description,
-						Title = of.Title
+						Title = of.Title,
+						OwnerId = of.OwnerId,
+						Car = of.Car,
+						Owner = of.Owner
 					}).Take(3).OrderByDescending(of=>of.CreatedOn).ToListAsync();
 		}
 		 

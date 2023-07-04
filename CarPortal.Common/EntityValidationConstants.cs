@@ -67,5 +67,14 @@ namespace CarPortal.Common
             public const int PathMinLength = 1;
             public const int PathMaxLength = 256;
         }
+
+        public static class ApplicationUser
+        {
+            public const int FirstNameMinLength = 2;
+            public const int FirstNameMaxLength = 50;
+
+            public const int LastNameMinLength = 2;
+            public const int LastNameMaxLength = 50;
+		}
     }
 }

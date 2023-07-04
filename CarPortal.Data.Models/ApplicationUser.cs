@@ -1,5 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
+using static CarPortal.Common.EntityValidationConstants.ApplicationUser;
 
 namespace CarPortal.Data.Models
 {
@@ -9,10 +11,17 @@ namespace CarPortal.Data.Models
         {
             Id = Guid.NewGuid();
         }
+        [Required]
+        [MaxLength(FirstNameMaxLength)]
+        public string? FirstName { get; set; }
+
+        [Required]
+        [MaxLength(LastNameMaxLength)]
+		public string? LastName { get; set; }
 
         [ForeignKey(nameof(Region))]
         public int RegionId { get; set; }
 
-        public Region Region { get; set; } = null!;
+        public Region? Region { get; set; } = null!;
     }
 }

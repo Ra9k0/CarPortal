@@ -257,6 +257,10 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\photos\\Untitled design.png",
+      "PackagePath": "staticwebassets\\photos\\Untitled design.png"
+    },
+    {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.CarPortal.Web.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
