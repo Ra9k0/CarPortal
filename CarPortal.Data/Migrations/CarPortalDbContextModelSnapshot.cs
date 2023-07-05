@@ -107,7 +107,7 @@ namespace CarPortal.Data.Migrations
                         {
                             Id = new Guid("3ba0e94f-d15f-4911-9bd0-e10e9d89397f"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8396ddb2-2418-43fc-a1c7-6e84e850a91f",
+                            ConcurrencyStamp = "ad67c393-f545-446d-9bdf-c597abb75f89",
                             Email = "ceca@lepa.sr",
                             EmailConfirmed = false,
                             FirstName = "Ceca",
@@ -1148,7 +1148,7 @@ namespace CarPortal.Data.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 7, 4, 12, 31, 14, 525, DateTimeKind.Utc).AddTicks(7111));
+                        .HasDefaultValue(new DateTime(2023, 7, 5, 4, 38, 28, 582, DateTimeKind.Utc).AddTicks(6636));
 
                     b.Property<string>("Description")
                         .IsRequired()

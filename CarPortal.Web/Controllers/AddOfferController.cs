@@ -14,16 +14,19 @@ namespace CarPortal.Web.Controllers
 			this.addOfferService = addOfferService;
 		}
 
-		public async Task<IActionResult> Index()
+		public IActionResult Index()
 		{
-			ViewBag.Categories = new SelectList(await addOfferService.GetAllCategoriesAsync(), "Id","Name");
+			ViewBag.Makes = addOfferService.GetAllModelsAsync().Result.DistinctBy(m=>m.MakeId);
+			ViewBag.Models = addOfferService.GetAllModelsAsync().Result;
 
 			return View();
-		}
+			}
 
-		public async Task<JsonResult> GetMakes(int categoryId)
+		public async Task<JsonResult> GetModelsList(int id)
 		{
-			return Json(await addOfferService.GetMakesByCategoryAsync(categoryId));
+			var MakesList = await addOfferService.GetModelsByMakeAsync(id);
+				
+            return Json(MakesList.ToList());
 		}
 	}
 }

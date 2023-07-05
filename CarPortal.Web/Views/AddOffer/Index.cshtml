@@ -4,83 +4,57 @@
 	ViewData["Title"] = "Add Offer Page";
 }
 @model CarPortal.Web.ViewModels.AddOffer.ModelViewModel
+@inject IAddOfferService service
 
 <form>
-	<div class="form-row">
-		<div class="form-group col-md-4">
-			<label for="Categories">Category</label>
-			<select asp-for="CategoryId" id="categoryId" asp-items="@ViewBag.Categories" class="form-control">
-			</select>
-		</div>
-		<div class="form-group col-md-4">
-			<label for="Makes">Makes</label>
-			<select asp-for="Id" id="makeId" class="form-control">
-			</select>
-		</div>
-		<div class="form-group col-md-4">
-			<label for="Model">Model</label>
-			<select id="Model" class="form-control">
-				<option>Choose...</option>
-			</select>
-		</div>
-		<div class="form-group col-md-6">
-			<label for="inputPassword4">Password</label>
-			<input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-		</div>
+	<div class="form-group" style="padding-top: 8px; padding-right:7px;">
+		<label asp-for="Make" class="control-label"></label>
+		<br />
+		<select asp-for="MakeId" class="form-control" asp-items="@(new SelectList(ViewBag.Makes,"MakeId","Make.Name"))">
+			<option value="0">--Select Make--</option>
+		</select>
+	</div>
+	<br />
+	<div class="form-group" style="padding-top:8px; padding-right:7px;">
+		<label asp-for="Name" class="control-label">Model</label>
+		<br />
+		<select asp-for="Id" class="form-control">
+		</select>
 	</div>
 	<div class="form-group">
-		<label for="inputAddress">Address</label>
-		<input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+		<label class="control-label">Engine Type</label>
+		<br />
+		<select asp-items="@(new SelectList(await service.GetAllEngineTypes(),"Id","Type"))" class="form-control">
+		</select>
 	</div>
 	<div class="form-group">
-		<label for="inputAddress2">Address 2</label>
-		<input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-	</div>
-	<div class="form-row">
-		<div class="form-group col-md-6">
-			<label for="inputCity">City</label>
-			<input type="text" class="form-control" id="inputCity">
-		</div>
-		<div class="form-group col-md-2">
-			<label for="inputZip">Zip</label>
-			<input type="text" class="form-control" id="inputZip">
-		</div>
+		<label for="formGroupExampleInput">Year of manufacure</label>
+		<input type="text" class="form-control" id="YearOfManifacture" placeholder="Enter Year">
 	</div>
 	<div class="form-group">
-		<div class="form-check">
-			<input class="form-check-input" type="checkbox" id="gridCheck">
-			<label class="form-check-label" for="gridCheck">
-				Check me out
-			</label>
-		</div>
+		<label class="control-label">Color</label>
+		<br />
+		<select asp-items="@(new SelectList(await service.GetAllColors(),"Id","Name"))" class="form-control">
+		</select>
+	</div>
+	<div class="form-group">
+		<label class="control-label">Condition</label>
+		<br />
+		<select asp-items="@(new SelectList(await service.GetAllConditions(),"Id","Name"))" class="form-control">
+		</select>
 	</div>
 	<button type="submit" class="btn btn-primary">Sign in</button>
 </form>
 
-@section Scripts{
+@section scripts{
 	<script>
-	$(document).ready(function(){
-		getMakeByCategoryId();
-	})
-	$('#categoryId').change(function(){
-		getMakeByCategoryId();
-	});
-		var getMakeByCategoryId = function(){
-			$.ajax({
-				url: '@Url.Action("GetMakes", "AddOffer")',
-				type: 'GET',
-				data:{
-					categoryId : $('#categoryId').val(),
-				},
-				success: function(data){
-					$('#productId').find('option').remove()
-					$(data).each(
-						function(index,item){
-							$('#makeId').append('<option value="'+item.id+'">'+item.name+'</option>')
-						}
-					);
-				}
-			})
-		}
+		$("#MakeId").change(function () {
+			$.get("/AddOffer/GetModelsList", { id: $("#MakeId").val() }, function (data) {
+				$("#Id").empty();
+				$.each(data, function (index, row) {
+					$("#Id").append("<option value='" + row.memberId + "'>" + row.name + "</option>")
+				});
+			});
+		})
 	</script>
 }

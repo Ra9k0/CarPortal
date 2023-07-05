@@ -9,5 +9,15 @@ namespace CarPortal.Services.Interfaces
 		Task<IEnumerable<MakeViewModel>> GetMakesByCategoryAsync(int categoryId);
 
 		Task<IEnumerable<Category>> GetAllCategoriesAsync();
-	}
+
+		Task<IEnumerable<ModelViewModel>> GetAllModelsAsync();
+
+		Task<IEnumerable<ModelViewModel>> GetModelsByMakeAsync(int makeId);
+
+		Task<IEnumerable<EngineTypeViewModel>> GetAllEngineTypes();
+
+        Task<IEnumerable<ColorViewModel>> GetAllColors();
+
+        Task<IEnumerable<ConditionViewModel>> GetAllConditions();
+    }
 }
