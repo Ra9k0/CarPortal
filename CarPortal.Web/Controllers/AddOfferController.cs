@@ -25,7 +25,6 @@ namespace CarPortal.Web.Controllers
 		public async Task<JsonResult> GetModelsList(int id)
 		{
 			var MakesList = await addOfferService.GetModelsByMakeAsync(id);
-				
             return Json(MakesList.ToList());
 		}
 	}

@@ -3,44 +3,55 @@
 @{
 	ViewData["Title"] = "Add Offer Page";
 }
-@model CarPortal.Web.ViewModels.AddOffer.ModelViewModel
+@model CarPortal.Web.ViewModels.AddOffer.AddOfferViewModel
 @inject IAddOfferService service
 
 <form>
+	<div class="form-group">
+		<label for="formGroupExampleInput">Title</label>
+		<input asp-for="Title" type="text" class="form-control" id="Title" placeholder="Enter Title">
+		<span asp-validation-for="Title" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label for="formGroupExampleInput">Description</label>
+		<input asp-for="Description" type="text" class="form-control" id="Title" placeholder="Enter Description">
+		<span asp-validation-for="Description" class="text-danger">Description must be between 100 and 1000!</span>
+	</div>
 	<div class="form-group" style="padding-top: 8px; padding-right:7px;">
-		<label asp-for="Make" class="control-label"></label>
+		<label asp-for="Car.Model.Make" class="control-label"></label>
 		<br />
-		<select asp-for="MakeId" class="form-control" asp-items="@(new SelectList(ViewBag.Makes,"MakeId","Make.Name"))">
+		<select asp-for="Car.Model.Make.Id" class="form-control" asp-items="@(new SelectList(ViewBag.Makes,"MakeId","Make.Name"))">
 			<option value="0">--Select Make--</option>
 		</select>
 	</div>
 	<br />
 	<div class="form-group" style="padding-top:8px; padding-right:7px;">
-		<label asp-for="Name" class="control-label">Model</label>
+		<label asp-for="Car.Model" class="control-label">Model</label>
 		<br />
-		<select asp-for="Id" class="form-control">
+		<select asp-for="Car.Model.Id" class="form-control">
 		</select>
 	</div>
 	<div class="form-group">
-		<label class="control-label">Engine Type</label>
+		<label asp-for="Car.EngineType" class="control-label">Engine Type</label>
 		<br />
-		<select asp-items="@(new SelectList(await service.GetAllEngineTypes(),"Id","Type"))" class="form-control">
+		<select asp-for="Car.EngineType.Id" asp-items="@(new SelectList(await service.GetAllEngineTypes(),"Id","Type"))" class="form-control">
 		</select>
 	</div>
 	<div class="form-group">
 		<label for="formGroupExampleInput">Year of manufacure</label>
-		<input type="text" class="form-control" id="YearOfManifacture" placeholder="Enter Year">
+		<input asp-for="Car.ManufactureYear" type="text" class="form-control" id="YearOfManifacture" placeholder="Enter Year">
+		<span asp-validation-for="Title" class="text-danger">Enter valid year of manifacture!</span>
 	</div>
 	<div class="form-group">
-		<label class="control-label">Color</label>
+		<label asp-for="Car.Color" class="control-label">Color</label>
 		<br />
-		<select asp-items="@(new SelectList(await service.GetAllColors(),"Id","Name"))" class="form-control">
+		<select asp-for="Car.ColorId" asp-items="@(new SelectList(await service.GetAllColors(),"Id","Name"))" class="form-control">
 		</select>
 	</div>
 	<div class="form-group">
-		<label class="control-label">Condition</label>
+		<label asp-for="Car.Condition" class="control-label">Condition</label>
 		<br />
-		<select asp-items="@(new SelectList(await service.GetAllConditions(),"Id","Name"))" class="form-control">
+		<select asp-for="Car.ConditionId" asp-items="@(new SelectList(await service.GetAllConditions(),"Id","Name"))" class="form-control">
 		</select>
 	</div>
 	<button type="submit" class="btn btn-primary">Sign in</button>
@@ -48,11 +59,11 @@
 
 @section scripts{
 	<script>
-		$("#MakeId").change(function () {
-			$.get("/AddOffer/GetModelsList", { id: $("#MakeId").val() }, function (data) {
-				$("#Id").empty();
+		$("#Car.Model.Make.Id").change(function () {
+			$.get("/AddOffer/GetModelsList", { id: $("#Car.Model.Make.Id").val() }, function (data) {
+				$("#Car.Model.Id").empty();
 				$.each(data, function (index, row) {
-					$("#Id").append("<option value='" + row.memberId + "'>" + row.name + "</option>")
+					$("#Car.Model.Id").append("<option value='" + row.memberId + "'>" + row.name + "</option>")
 				});
 			});
 		})
