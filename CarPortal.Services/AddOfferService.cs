@@ -17,16 +17,18 @@ namespace CarPortal.Services
 
 		public async Task<IEnumerable<MakeViewModel>> GetMakesByCategoryAsync(int categoryId)
 		{
-			return await dbContext.Makes.Where(make=>make.Models.All(model=>model.CategoryId == categoryId)).Select(m => new MakeViewModel()
+			var makes = await dbContext.Models.Where(m => m.CategoryId == categoryId).Select(m => new MakeViewModel()
 			{
-				Id = m.Id,
-				Name = m.Name
+				Id = m.Make.Id,
+				Name = m.Make.Name,
 			}).ToListAsync();
+
+			return makes;
 		}
 
-        public async Task<IEnumerable<ModelViewModel>> GetModelsByMakeAsync(int makeId)
+        public async Task<IEnumerable<ModelViewModel>> GetModelsByMakeAsync(int makeId, int categoryId)
         {
-            var models = await dbContext.Models.Where(m => m.MakeId == makeId).Select(m => new ModelViewModel()
+            var models = await dbContext.Models.Where(m => m.MakeId == makeId && m.CategoryId == categoryId).Select(m => new ModelViewModel()
             {
                 Id = m.Id,
                 Name = m.Name,
@@ -87,5 +89,61 @@ namespace CarPortal.Services
                 Name = c.Name
             }).ToListAsync();
         }
+
+		public async Task CreateOffer(AddOfferViewModel offer, Guid userId)
+		{
+			Guid offerId = Guid.NewGuid();
+
+			if (offer.ImageFiles != null && offer.ImageFiles.Count > 0)
+			{
+
+				foreach (var file in offer.ImageFiles)
+				{
+					// Generate a unique filename or use any desired logic
+					var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+
+					// Specify the path where the images will be saved
+					var filePath = Path.Combine("OfferImages", fileName);
+
+					// Save the file to the server
+					using (var stream = new FileStream(filePath, FileMode.Create))
+					{
+						await file.CopyToAsync(stream);
+					}
+
+					Image image = new Image()
+					{
+						OfferId = offerId,
+						PhotoPath = "/images/" + fileName,
+					};
+					await dbContext.AddAsync(image);
+				}
+			}
+
+			Car car = new Car()
+			{
+				ColorId = offer.Car.ColorId,
+				ConditionId = offer.Car.ConditionId,
+				EngineTypeId = offer.Car.EngineTypeId,
+				ManufactureYear = offer.Car.ManufactureYear,
+				ModelId = offer.Car.ModelId
+			};
+			await dbContext.Cars.AddAsync(car);
+			await dbContext.SaveChangesAsync();
+
+
+			Offer offerForAdd = new Offer()
+			{
+				Id = offerId,
+				Title = offer.Title,
+				Description = offer.Description,
+				Price = offer.Price,
+				CarId = dbContext.Cars.LastAsync().Id,
+				OwnerId = userId
+			};
+
+			await dbContext.Offers.AddAsync(offerForAdd);
+			await dbContext.SaveChangesAsync();
+		}
 	}
 }

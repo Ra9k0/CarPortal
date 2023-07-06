@@ -6,66 +6,122 @@
 @model CarPortal.Web.ViewModels.AddOffer.AddOfferViewModel
 @inject IAddOfferService service
 
-<form>
-	<div class="form-group">
-		<label for="formGroupExampleInput">Title</label>
+<form method="POST" asp-controller="AddOffer" asp-action="Index" enctype="multipart/form-data">
+	<div>
+		<label >Title</label>
 		<input asp-for="Title" type="text" class="form-control" id="Title" placeholder="Enter Title">
 		<span asp-validation-for="Title" class="text-danger"></span>
 	</div>
-	<div class="form-group">
-		<label for="formGroupExampleInput">Description</label>
-		<input asp-for="Description" type="text" class="form-control" id="Title" placeholder="Enter Description">
-		<span asp-validation-for="Description" class="text-danger">Description must be between 100 and 1000!</span>
+	<div>
+		<label >Description</label>
+		<input asp-for="Description" type="text" class="form-control" id="Description" placeholder="Enter Description">
+		<span asp-validation-for="Description" class="text-danger"></span>
 	</div>
-	<div class="form-group" style="padding-top: 8px; padding-right:7px;">
-		<label asp-for="Car.Model.Make" class="control-label"></label>
+	<div style="padding-top: 8px; padding-right:7px;">
+		<label asp-for="Car.Model.Category"></label>
 		<br />
-		<select asp-for="Car.Model.Make.Id" class="form-control" asp-items="@(new SelectList(ViewBag.Makes,"MakeId","Make.Name"))">
+		<select asp-for="Car.Model.CategoryId" class="form-control" asp-items="@(new SelectList(ViewBag.Categories,"Id","Name"))">
+			<option value="0">--Select Category--</option>
+		</select>
+	</div>
+	<div style="padding-top: 8px; padding-right:7px;">
+		<label asp-for="Car.Model.Make"></label>
+		<br />
+		<select asp-for="Car.Model.MakeId" class="form-control">
 			<option value="0">--Select Make--</option>
 		</select>
 	</div>
 	<br />
-	<div class="form-group" style="padding-top:8px; padding-right:7px;">
-		<label asp-for="Car.Model" class="control-label">Model</label>
+	<div style="padding-top:8px; padding-right:7px;">
+		<label asp-for="Car.Model">Model</label>
 		<br />
-		<select asp-for="Car.Model.Id" class="form-control">
+		<select asp-for="Car.ModelId" class="form-control">
 		</select>
 	</div>
-	<div class="form-group">
-		<label asp-for="Car.EngineType" class="control-label">Engine Type</label>
+	<div>
+		<label asp-for="Car.EngineType">Engine Type</label>
 		<br />
-		<select asp-for="Car.EngineType.Id" asp-items="@(new SelectList(await service.GetAllEngineTypes(),"Id","Type"))" class="form-control">
+		<select asp-for="Car.EngineTypeId" asp-items="@(new SelectList(await service.GetAllEngineTypes(),"Id","Type"))" class="form-control">
 		</select>
 	</div>
-	<div class="form-group">
-		<label for="formGroupExampleInput">Year of manufacure</label>
-		<input asp-for="Car.ManufactureYear" type="text" class="form-control" id="YearOfManifacture" placeholder="Enter Year">
-		<span asp-validation-for="Title" class="text-danger">Enter valid year of manifacture!</span>
+	<div>
+		<label asp-for="Car.ManufactureYear">Year of manufacture</label>
+		<input asp-for="Car.ManufactureYear" type="text" class="form-control" id="YearOfManufacture" placeholder="Enter Year">
+		<span asp-validation-for="Car.ManufactureYear" class="text-danger"></span>
 	</div>
-	<div class="form-group">
-		<label asp-for="Car.Color" class="control-label">Color</label>
+	<div>
+		<label asp-for="Car.Color" >Color</label>
 		<br />
 		<select asp-for="Car.ColorId" asp-items="@(new SelectList(await service.GetAllColors(),"Id","Name"))" class="form-control">
 		</select>
 	</div>
-	<div class="form-group">
-		<label asp-for="Car.Condition" class="control-label">Condition</label>
+	<div>
+		<label asp-for="Car.Condition" >Condition</label>
 		<br />
 		<select asp-for="Car.ConditionId" asp-items="@(new SelectList(await service.GetAllConditions(),"Id","Name"))" class="form-control">
 		</select>
 	</div>
-	<button type="submit" class="btn btn-primary">Sign in</button>
+	<div>
+		<label asp-for="Price">Price</label>
+		<input asp-for="Price" type="text" class="form-control" id="Price" placeholder="Enter Price">
+		<span asp-validation-for="Price" class="text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="ImageFiles"></label>
+		<input asp-for="ImageFiles" type="file" class="form-control-file" multiple accept="image/*" name="ImageFiles">
+		<span asp-validation-for="ImageFiles" class="text-danger"></span>
+	</div>
+	<button type="submit" class="btn btn-primary">Create</button>
+
 </form>
+
 
 @section scripts{
 	<script>
-		$("#Car.Model.Make.Id").change(function () {
-			$.get("/AddOffer/GetModelsList", { id: $("#Car.Model.Make.Id").val() }, function (data) {
-				$("#Car.Model.Id").empty();
-				$.each(data, function (index, row) {
-					$("#Car.Model.Id").append("<option value='" + row.memberId + "'>" + row.name + "</option>")
+		$(document).ready(function () {
+			$("select[name='Car\\.Model\\.CategoryId']").change(function () {
+				var selectedMakeId = $(this).val();
+
+				$.ajax({
+					url: "/AddOffer/GetMakesList",
+					type: "GET",
+					data: { id: selectedMakeId },
+					success: function (data) {
+						var modelDropdown = $("select[name='Car\\.Model\\.MakeId']");
+						modelDropdown.empty();
+
+						$.each(data, function (index, model) {
+							modelDropdown.append($('<option></option>').val(model.id).text(model.name));
+						});
+					},
+					error: function (xhr, status, error) {
+						console.log(error);
+					}
 				});
 			});
-		})
+			$("select[name='Car\\.Model\\.MakeId']").change(function () {
+				var selectedMakeId = $(this).val();
+				var selectedCategoryId = $("select[name='Car\\.Model\\.CategoryId']").val();
+
+				$.ajax({
+					url: "/AddOffer/GetModelsList",
+					type: "GET",
+					data: { id: selectedMakeId , categoryId: selectedCategoryId},
+					success: function (data) {
+						var modelDropdown = $("select[name='Car\\.ModelId']");
+						modelDropdown.empty();
+
+						$.each(data, function (index, model) {
+							modelDropdown.append($('<option></option>').val(model.id).text(model.name));
+						});
+					},
+					error: function (xhr, status, error) {
+						console.log(error);
+					}
+				});
+			});
+		});
 	</script>
+	<partial name="_ValidationScriptsPartial" />
 }
+

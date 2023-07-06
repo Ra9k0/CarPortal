@@ -30,8 +30,7 @@ namespace CarPortal.Web.ViewModels.AddOffer
         public ConditionViewModel Condition { get; set; } = null!;
 
         [Required]
-        [MinLength(MinYearManufacture)]
-        [MaxLength(MaxYearManufacture)]
-        public int ManufactureYear { get; set; }
+        [Range(MinYearManufacture, MaxYearManufacture, ErrorMessage = "Enter a valid year of manufacture.")]
+		public int ManufactureYear { get; set; }
     }
 }

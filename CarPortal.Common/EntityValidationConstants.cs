@@ -60,7 +60,10 @@ namespace CarPortal.Common
 
             public const int DescriptionMinLength = 100;
             public const int DescriptionMaxLength = 1000;
-        }
+
+            public const double PriceMinLength = 1;
+            public const double PriceMaxLength = double.MaxValue;
+		}
 
         public static class Image
         {

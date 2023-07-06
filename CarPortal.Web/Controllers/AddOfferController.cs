@@ -1,11 +1,13 @@
 ﻿using CarPortal.Services.Interfaces;
+using CarPortal.Web.ViewModels.AddOffer;
+using CarPortal.Web.ViewModels.Home;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CarPortal.Web.Controllers
 {
-	public class AddOfferController : Controller
+	public class AddOfferController : BaseController
 	{
 		private readonly IAddOfferService addOfferService;
 
@@ -16,16 +18,29 @@ namespace CarPortal.Web.Controllers
 
 		public IActionResult Index()
 		{
-			ViewBag.Makes = addOfferService.GetAllModelsAsync().Result.DistinctBy(m=>m.MakeId);
-			ViewBag.Models = addOfferService.GetAllModelsAsync().Result;
+			ViewBag.Categories = addOfferService.GetAllCategoriesAsync().Result;
 
 			return View();
-			}
+		}
 
-		public async Task<JsonResult> GetModelsList(int id)
+		[HttpPost]
+		public IActionResult Index(AddOfferViewModel offer)
 		{
-			var MakesList = await addOfferService.GetModelsByMakeAsync(id);
-            return Json(MakesList.ToList());
+			addOfferService.CreateOffer(offer,Guid.Parse(GetUserId()));
+			return Redirect("Home");
+		}
+
+		public async Task<JsonResult> GetModelsList(int id, int categoryId)
+		{
+			var modelsList = await addOfferService.GetModelsByMakeAsync(id,categoryId);
+            return Json(modelsList.ToList());
+		}
+
+		[HttpGet]
+		public async Task<JsonResult> GetMakesList(int id)
+		{
+			var makesList = await addOfferService.GetMakesByCategoryAsync(id);
+			return Json(makesList.ToList().DistinctBy(m=>m.Id));
 		}
 	}
 }

@@ -12,12 +12,14 @@ namespace CarPortal.Services.Interfaces
 
 		Task<IEnumerable<ModelViewModel>> GetAllModelsAsync();
 
-		Task<IEnumerable<ModelViewModel>> GetModelsByMakeAsync(int makeId);
+		Task<IEnumerable<ModelViewModel>> GetModelsByMakeAsync(int makeId, int categoryId);
 
 		Task<IEnumerable<EngineTypeViewModel>> GetAllEngineTypes();
 
         Task<IEnumerable<ColorViewModel>> GetAllColors();
 
         Task<IEnumerable<ConditionViewModel>> GetAllConditions();
-    }
+
+        Task CreateOffer(AddOfferViewModel offer, Guid userId);
+	}
 }

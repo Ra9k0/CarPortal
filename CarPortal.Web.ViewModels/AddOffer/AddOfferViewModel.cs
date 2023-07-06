@@ -1,8 +1,8 @@
-﻿
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using static CarPortal.Common.EntityValidationConstants.Offer;
 using CarPortal.Data.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace CarPortal.Web.ViewModels.AddOffer
 {
@@ -12,30 +12,24 @@ namespace CarPortal.Web.ViewModels.AddOffer
         public Guid Id { get; set; }
 
         [Required]
-        [MinLength(TitleMinLength)]
-        [MaxLength(TitleMaxLength)]
-        public string Title { get; set; } = null!;
+        [StringLength(TitleMaxLength, MinimumLength = TitleMinLength, ErrorMessage = $"The Title must be between 10 and 100 characters.")]
+		public string Title { get; set; } = null!;
 
         [Required]
+        [Range(PriceMinLength, PriceMaxLength, ErrorMessage = "The Price must valid.")]
         public decimal Price { get; set; }
 
         [Required]
-        [MinLength(DescriptionMinLength)]
-        [MaxLength(DescriptionMaxLength)]
-        public string Description { get; set; } = null!;
+        [StringLength(DescriptionMaxLength, MinimumLength = DescriptionMinLength, ErrorMessage = "The Description must be between 100 and 1000 characters.")]
+		public string Description { get; set; } = null!;
 
-        [ForeignKey(nameof(Car))]
-        public int CarId { get; set; }
+		public CarViewModel Car { get; set; } = null!;
 
-        public CarViewModel Car { get; set; } = null!;
-
-        [ForeignKey(nameof(Owner))]
         public Guid OwnerId { get; set; }
-
-        public ApplicationUser Owner { get; set; } = null!;
 
         public DateTime CreatedOn { get; set; }
 
-        public ICollection<Image> Images { get; set; }
-    }
+        [Required(ErrorMessage = "Please select at least one image.")]
+        public List<IFormFile> ImageFiles { get; set; } = null!;
+	}
 }

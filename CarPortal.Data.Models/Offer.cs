@@ -20,6 +20,7 @@ namespace CarPortal.Data.Models
         public string Title { get; set; } = null!;
 
         [Required]
+        [Range(PriceMinLength,PriceMaxLength)]
         public decimal Price { get; set; }
 
         [Required]

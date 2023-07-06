@@ -2222,24 +2222,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\21_1\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\rstam\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\21_1\\Documents\\GitHub\\CarPortal\\CarPortal.Data\\CarPortal.Data.csproj",
+      "projectUniqueName": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Data\\CarPortal.Data.csproj",
       "projectName": "CarPortal.Data",
-      "projectPath": "C:\\Users\\21_1\\Documents\\GitHub\\CarPortal\\CarPortal.Data\\CarPortal.Data.csproj",
-      "packagesPath": "C:\\Users\\21_1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\21_1\\Documents\\GitHub\\CarPortal\\CarPortal.Data\\obj\\",
+      "projectPath": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Data\\CarPortal.Data.csproj",
+      "packagesPath": "C:\\Users\\rstam\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Data\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\21_1\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\rstam\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2253,11 +2248,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\21_1\\Documents\\GitHub\\CarPortal\\CarPortal.Common\\CarPortal.Common.csproj": {
-              "projectPath": "C:\\Users\\21_1\\Documents\\GitHub\\CarPortal\\CarPortal.Common\\CarPortal.Common.csproj"
+            "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Common\\CarPortal.Common.csproj": {
+              "projectPath": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Common\\CarPortal.Common.csproj"
             },
-            "C:\\Users\\21_1\\Documents\\GitHub\\CarPortal\\CarPortal.Data.Models\\CarPortal.Data.Models.csproj": {
-              "projectPath": "C:\\Users\\21_1\\Documents\\GitHub\\CarPortal\\CarPortal.Data.Models\\CarPortal.Data.Models.csproj"
+            "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Data.Models\\CarPortal.Data.Models.csproj": {
+              "projectPath": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Data.Models\\CarPortal.Data.Models.csproj"
             }
           }
         }
@@ -2303,7 +2298,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
