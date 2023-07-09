@@ -16,7 +16,7 @@ namespace CarPortal.Web
             // Add services to the container.
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             builder.Services.AddDbContext<CarPortalDbContext>(options =>
-                options.UseSqlServer(connectionString));
+                options.UseSqlServer(connectionString),ServiceLifetime.Scoped);
            
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 

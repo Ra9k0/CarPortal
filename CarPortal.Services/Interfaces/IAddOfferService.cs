@@ -19,7 +19,7 @@ namespace CarPortal.Services.Interfaces
         Task<IEnumerable<ColorViewModel>> GetAllColors();
 
         Task<IEnumerable<ConditionViewModel>> GetAllConditions();
-
-        Task CreateOffer(AddOfferViewModel offer, Guid userId);
+        
+		Task CreateOffer(AddOfferViewModel offer, Guid userId);
 	}
 }

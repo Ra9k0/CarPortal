@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarPortal.Data.Migrations
 {
     [DbContext(typeof(CarPortalDbContext))]
-    [Migration("20230705043828_Intial")]
-    partial class Intial
+    [Migration("20230708130246_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -109,7 +109,7 @@ namespace CarPortal.Data.Migrations
                         {
                             Id = new Guid("3ba0e94f-d15f-4911-9bd0-e10e9d89397f"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ad67c393-f545-446d-9bdf-c597abb75f89",
+                            ConcurrencyStamp = "bc0e6f7a-e080-4814-81e7-5d1d69baa8c2",
                             Email = "ceca@lepa.sr",
                             EmailConfirmed = false,
                             FirstName = "Ceca",
@@ -1150,7 +1150,7 @@ namespace CarPortal.Data.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 7, 5, 4, 38, 28, 582, DateTimeKind.Utc).AddTicks(6636));
+                        .HasDefaultValue(new DateTime(2023, 7, 8, 13, 2, 46, 296, DateTimeKind.Utc).AddTicks(1383));
 
                     b.Property<string>("Description")
                         .IsRequired()

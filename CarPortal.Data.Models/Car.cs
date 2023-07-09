@@ -32,5 +32,10 @@ namespace CarPortal.Data.Models
         [Required]
         [MaxLength(MaxYearManufacture)]
         public int ManufactureYear { get; set; }
-    }
+
+		[ForeignKey(nameof(Offer))]
+		public Guid OfferId { get; set; }
+
+		public Offer Offer { get; set; } = null!;
+	}
 }

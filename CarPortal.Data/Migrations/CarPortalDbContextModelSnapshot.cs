@@ -107,7 +107,7 @@ namespace CarPortal.Data.Migrations
                         {
                             Id = new Guid("3ba0e94f-d15f-4911-9bd0-e10e9d89397f"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ad67c393-f545-446d-9bdf-c597abb75f89",
+                            ConcurrencyStamp = "bc0e6f7a-e080-4814-81e7-5d1d69baa8c2",
                             Email = "ceca@lepa.sr",
                             EmailConfirmed = false,
                             FirstName = "Ceca",
@@ -156,7 +156,7 @@ namespace CarPortal.Data.Migrations
 
                     b.HasIndex("ModelId");
 
-                    b.ToTable("Cars");
+                    b.ToTable("Cars", (string)null);
 
                     b.HasData(
                         new
@@ -203,7 +203,7 @@ namespace CarPortal.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
 
                     b.HasData(
                         new
@@ -238,7 +238,7 @@ namespace CarPortal.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Colors");
+                    b.ToTable("Colors", (string)null);
 
                     b.HasData(
                         new
@@ -358,7 +358,7 @@ namespace CarPortal.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Conditions");
+                    b.ToTable("Conditions", (string)null);
 
                     b.HasData(
                         new
@@ -393,7 +393,7 @@ namespace CarPortal.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("EngineTypes");
+                    b.ToTable("EngineTypes", (string)null);
 
                     b.HasData(
                         new
@@ -438,7 +438,7 @@ namespace CarPortal.Data.Migrations
 
                     b.HasIndex("OfferId");
 
-                    b.ToTable("Images");
+                    b.ToTable("Images", (string)null);
 
                     b.HasData(
                         new
@@ -476,7 +476,7 @@ namespace CarPortal.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Makes");
+                    b.ToTable("Makes", (string)null);
 
                     b.HasData(
                         new
@@ -711,7 +711,7 @@ namespace CarPortal.Data.Migrations
 
                     b.HasIndex("MakeId");
 
-                    b.ToTable("Models");
+                    b.ToTable("Models", (string)null);
 
                     b.HasData(
                         new
@@ -1148,7 +1148,7 @@ namespace CarPortal.Data.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 7, 5, 4, 38, 28, 582, DateTimeKind.Utc).AddTicks(6636));
+                        .HasDefaultValue(new DateTime(2023, 7, 8, 13, 2, 46, 296, DateTimeKind.Utc).AddTicks(1383));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -1172,7 +1172,7 @@ namespace CarPortal.Data.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("Offers");
+                    b.ToTable("Offers", (string)null);
 
                     b.HasData(
                         new
@@ -1222,7 +1222,7 @@ namespace CarPortal.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Regions");
+                    b.ToTable("Regions", (string)null);
 
                     b.HasData(
                         new

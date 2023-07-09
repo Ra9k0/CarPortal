@@ -1,18 +1,23 @@
-﻿using CarPortal.Data;
+﻿using System;
+using System.Security.Cryptography.X509Certificates;
+using CarPortal.Data;
 using CarPortal.Data.Models;
 using CarPortal.Services.Interfaces;
 using CarPortal.Web.ViewModels.AddOffer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CarPortal.Services
 {
 	public class AddOfferService : IAddOfferService
 	{
 		private readonly CarPortalDbContext dbContext;
+		private readonly IServiceProvider serviceProvider;
 
-		public AddOfferService(CarPortalDbContext dbContext)
+		public AddOfferService(CarPortalDbContext dbContext, IServiceProvider serviceProvider)
 		{
 			this.dbContext = dbContext;
+			this.serviceProvider = serviceProvider;
 		}
 
 		public async Task<IEnumerable<MakeViewModel>> GetMakesByCategoryAsync(int categoryId)
@@ -90,36 +95,9 @@ namespace CarPortal.Services
             }).ToListAsync();
         }
 
+
 		public async Task CreateOffer(AddOfferViewModel offer, Guid userId)
 		{
-			Guid offerId = Guid.NewGuid();
-
-			if (offer.ImageFiles != null && offer.ImageFiles.Count > 0)
-			{
-
-				foreach (var file in offer.ImageFiles)
-				{
-					// Generate a unique filename or use any desired logic
-					var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-
-					// Specify the path where the images will be saved
-					var filePath = Path.Combine("OfferImages", fileName);
-
-					// Save the file to the server
-					using (var stream = new FileStream(filePath, FileMode.Create))
-					{
-						await file.CopyToAsync(stream);
-					}
-
-					Image image = new Image()
-					{
-						OfferId = offerId,
-						PhotoPath = "/images/" + fileName,
-					};
-					await dbContext.AddAsync(image);
-				}
-			}
-
 			Car car = new Car()
 			{
 				ColorId = offer.Car.ColorId,
@@ -128,22 +106,57 @@ namespace CarPortal.Services
 				ManufactureYear = offer.Car.ManufactureYear,
 				ModelId = offer.Car.ModelId
 			};
-			await dbContext.Cars.AddAsync(car);
-			await dbContext.SaveChangesAsync();
-
 
 			Offer offerForAdd = new Offer()
 			{
-				Id = offerId,
 				Title = offer.Title,
 				Description = offer.Description,
 				Price = offer.Price,
-				CarId = dbContext.Cars.LastAsync().Id,
+				Car = car,
 				OwnerId = userId
 			};
-
+			await dbContext.Cars.AddAsync(car);
 			await dbContext.Offers.AddAsync(offerForAdd);
+
+			var images = await GetImages(offer, offerForAdd);
+
+			foreach (var image in images)
+			{
+				image.OfferId = offerForAdd.Id;
+				offerForAdd.Images.Add(image);
+			}
+
 			await dbContext.SaveChangesAsync();
+
+		}
+
+		private async Task<ICollection<Image>> GetImages(AddOfferViewModel offer, Offer offerAdded)
+		{
+			HashSet<Image> imagesList = new HashSet<Image>();
+			if (offer.ImageFiles != null && offer.ImageFiles.Count > 0)
+			{
+
+				foreach (var file in offer.ImageFiles)
+				{
+					var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+
+					var filePath = Path.Combine("wwwroot", "OfferImages", fileName);
+					
+
+					await using var stream = new FileStream(filePath, FileMode.Create);
+					await file.CopyToAsync(stream);
+
+
+
+					Image image = new Image()
+					{
+						PhotoPath = filePath,
+					};
+					imagesList.Add(image);
+				}
+			}
+
+			return imagesList;
 		}
 	}
 }

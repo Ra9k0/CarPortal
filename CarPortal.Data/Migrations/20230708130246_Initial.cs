@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CarPortal.Data.Migrations
 {
-    public partial class Intial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -319,7 +319,7 @@ namespace CarPortal.Data.Migrations
                     Description = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: false),
                     CarId = table.Column<int>(type: "int", nullable: false),
                     OwnerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 7, 5, 4, 38, 28, 582, DateTimeKind.Utc).AddTicks(6636))
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 7, 8, 13, 2, 46, 296, DateTimeKind.Utc).AddTicks(1383))
                 },
                 constraints: table =>
                 {
@@ -516,7 +516,7 @@ namespace CarPortal.Data.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "RegionId", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { new Guid("3ba0e94f-d15f-4911-9bd0-e10e9d89397f"), 0, "ad67c393-f545-446d-9bdf-c597abb75f89", "ceca@lepa.sr", false, "Ceca", "Lepa", false, null, "CECA@LEPA.SR", "CECA@LEPA.SR", null, null, false, 1, null, false, "ceca@lepa.sr" });
+                values: new object[] { new Guid("3ba0e94f-d15f-4911-9bd0-e10e9d89397f"), 0, "bc0e6f7a-e080-4814-81e7-5d1d69baa8c2", "ceca@lepa.sr", false, "Ceca", "Lepa", false, null, "CECA@LEPA.SR", "CECA@LEPA.SR", null, null, false, 1, null, false, "ceca@lepa.sr" });
 
             migrationBuilder.InsertData(
                 table: "Models",
