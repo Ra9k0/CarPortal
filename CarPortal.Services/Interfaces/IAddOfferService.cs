@@ -20,6 +20,6 @@ namespace CarPortal.Services.Interfaces
 
         Task<IEnumerable<ConditionViewModel>> GetAllConditions();
         
-		Task CreateOffer(AddOfferViewModel offer, Guid userId);
+		void CreateOffer(AddOfferViewModel offer, Guid userId);
 	}
 }

@@ -35,12 +35,9 @@ namespace CarPortal.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Offer>()
-                .Property(e => e.CreatedOn)
-                .HasDefaultValue(DateTime.UtcNow);
 
-            Assembly configAssembly = Assembly.GetAssembly(typeof(CarPortalDbContext)) ??
-                                      Assembly.GetExecutingAssembly();
+	        Assembly configAssembly = Assembly.GetAssembly(typeof(CarPortalDbContext)) ??
+	                                  Assembly.GetExecutingAssembly();
             builder.ApplyConfigurationsFromAssembly(configAssembly);
 
             base.OnModelCreating(builder);

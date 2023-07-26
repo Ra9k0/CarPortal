@@ -6,7 +6,9 @@ namespace CarPortal.Services.Interfaces
 {
 	public interface IHomeService
 	{
-		Task<IEnumerable<OfferViewModel>> GetOffersAsync(Guid id);
+		Task<IEnumerable<OfferViewModel>> GetOffersAsyncByRegion(Guid id);
+
+		Task<IEnumerable<OfferViewModel>> GetOffersAsync();
 
 		Task<ApplicationUser?> GetApplicationUserAsync(Guid id);
 

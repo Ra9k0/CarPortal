@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using CarPortal.Data.Models;
 using System.Security.Cryptography;
+using Microsoft.Extensions.Hosting;
 
 namespace CarPortal.Web.Controllers
 {
@@ -24,19 +25,23 @@ namespace CarPortal.Web.Controllers
 		[AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-	        IEnumerable<OfferViewModel> offer = new List<OfferViewModel>();
+	        IEnumerable<OfferViewModel> offers = new List<OfferViewModel>();
             if (User.Identity.IsAuthenticated)
             {
                 ApplicationUser? user = await homeService.GetApplicationUserAsync(Guid.Parse(GetUserId()));
-                offer = await homeService.GetOffersAsync(Guid.Parse(GetUserId()));
+                offers = await homeService.GetOffersAsyncByRegion(Guid.Parse(GetUserId()));
                 if (user != null)
-                {
-                    ViewBag.UserRegion = homeService.GetRegionAsync(user.RegionId).Result.Name;
+				{
+                    ViewBag.InfoMessage = $"The most recent offers in {homeService.GetRegionAsync(user.RegionId).Result.Name}!";
                 }
+			}
+            else
+            {
+	            ViewBag.InfoMessage = $"The most recent offers!";
+	            offers = await homeService.GetOffersAsync();
             }
-
-	        return View(offer);
-        }
+            return View(offers);
+		}
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

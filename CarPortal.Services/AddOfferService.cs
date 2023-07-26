@@ -12,12 +12,10 @@ namespace CarPortal.Services
 	public class AddOfferService : IAddOfferService
 	{
 		private readonly CarPortalDbContext dbContext;
-		private readonly IServiceProvider serviceProvider;
 
-		public AddOfferService(CarPortalDbContext dbContext, IServiceProvider serviceProvider)
+		public AddOfferService(CarPortalDbContext dbContext)
 		{
 			this.dbContext = dbContext;
-			this.serviceProvider = serviceProvider;
 		}
 
 		public async Task<IEnumerable<MakeViewModel>> GetMakesByCategoryAsync(int categoryId)
@@ -96,7 +94,7 @@ namespace CarPortal.Services
         }
 
 
-		public async Task CreateOffer(AddOfferViewModel offer, Guid userId)
+		public void CreateOffer(AddOfferViewModel offer, Guid userId)
 		{
 			Car car = new Car()
 			{
@@ -112,25 +110,27 @@ namespace CarPortal.Services
 				Title = offer.Title,
 				Description = offer.Description,
 				Price = offer.Price,
+				OwnerId = userId,
 				Car = car,
-				OwnerId = userId
+				Images = GetImages(offer).Result,
+				CreatedOn = DateTime.UtcNow
 			};
-			await dbContext.Cars.AddAsync(car);
-			await dbContext.Offers.AddAsync(offerForAdd);
 
-			var images = await GetImages(offer, offerForAdd);
-
-			foreach (var image in images)
+			try
 			{
-				image.OfferId = offerForAdd.Id;
-				offerForAdd.Images.Add(image);
+				dbContext.Cars.Add(car);
+				dbContext.Offers.Add(offerForAdd);
+				dbContext.SaveChanges();
 			}
-
-			await dbContext.SaveChangesAsync();
+			catch (Exception e)
+			{
+				Console.WriteLine(e);
+				throw;
+			}
 
 		}
 
-		private async Task<ICollection<Image>> GetImages(AddOfferViewModel offer, Offer offerAdded)
+		private async Task<ICollection<Image>> GetImages(AddOfferViewModel offer)
 		{
 			HashSet<Image> imagesList = new HashSet<Image>();
 			if (offer.ImageFiles != null && offer.ImageFiles.Count > 0)
@@ -140,17 +140,16 @@ namespace CarPortal.Services
 				{
 					var fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
 
-					var filePath = Path.Combine("wwwroot", "OfferImages", fileName);
-					
+					var filePath = Path.Combine("wwwroot", "OfferImages", fileName); 
 
-					await using var stream = new FileStream(filePath, FileMode.Create);
+					var stream = new FileStream(filePath, FileMode.Create);
+
 					await file.CopyToAsync(stream);
-
-
+						
 
 					Image image = new Image()
 					{
-						PhotoPath = filePath,
+						PhotoPath = $"OfferImages/{fileName}",
 					};
 					imagesList.Add(image);
 				}

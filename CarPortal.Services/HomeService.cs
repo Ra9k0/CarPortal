@@ -16,7 +16,7 @@ namespace CarPortal.Services
 			this.dbContext = dbContext;
 		}
 
-		public async Task<IEnumerable<OfferViewModel>> GetOffersAsync(Guid id)
+		public async Task<IEnumerable<OfferViewModel>> GetOffersAsyncByRegion(Guid id)
 		{
 			ApplicationUser user = await GetApplicationUserAsync(id) ?? new ApplicationUser();
 
@@ -35,7 +35,25 @@ namespace CarPortal.Services
 						Owner = of.Owner
 					}).Take(3).OrderByDescending(of=>of.CreatedOn).ToListAsync();
 		}
-		 
+
+		public async Task<IEnumerable<OfferViewModel>> GetOffersAsync()
+		{
+			return await dbContext.Offers.Select(of =>
+				new OfferViewModel()
+				{
+					Id = of.Id,
+					CarId = of.CarId,
+					Images = of.Images,
+					Price = of.Price,
+					CreatedOn = of.CreatedOn,
+					Description = of.Description,
+					Title = of.Title,
+					OwnerId = of.OwnerId,
+					Car = of.Car,
+					Owner = of.Owner
+				}).Take(3).OrderByDescending(of => of.CreatedOn).ToListAsync();
+		}
+
 		public async Task<ApplicationUser?> GetApplicationUserAsync(Guid id)
 		{
 			ApplicationUser? user = await dbContext.Users.FirstOrDefaultAsync(u => u.Id == id);
