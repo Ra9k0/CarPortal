@@ -1,5 +1,6 @@
 ﻿
 using CarPortal.Data.Models;
+using CarPortal.Web.ViewModels.AddOffer;
 
 namespace CarPortal.Web.ViewModels.Home
 {
@@ -23,7 +24,7 @@ namespace CarPortal.Web.ViewModels.Home
 
 		public DateTime CreatedOn { get; set; }
 
-		public ICollection<Image> Images { get; set; } = null!;
+		public Image Images { get; set; } = null!;
 
 
     }

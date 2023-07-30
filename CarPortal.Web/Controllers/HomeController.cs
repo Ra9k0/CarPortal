@@ -14,12 +14,10 @@ namespace CarPortal.Web.Controllers
     {
 
 		private readonly IHomeService homeService;
-        private readonly UserManager<ApplicationUser> userManager;
 
-        public HomeController(IHomeService homeService, UserManager<ApplicationUser> userManager)
+        public HomeController(IHomeService homeService)
 		{
 			this.homeService = homeService;
-            this.userManager = userManager;
 		}
 
 		[AllowAnonymous]

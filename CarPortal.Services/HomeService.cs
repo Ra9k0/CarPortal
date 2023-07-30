@@ -25,7 +25,7 @@ namespace CarPortal.Services
 					{
 						Id = of.Id,
 						CarId = of.CarId,
-						Images = of.Images,
+						Images = of.Images.First(),
 						Price = of.Price,
 						CreatedOn = of.CreatedOn,
 						Description = of.Description,
@@ -43,7 +43,7 @@ namespace CarPortal.Services
 				{
 					Id = of.Id,
 					CarId = of.CarId,
-					Images = of.Images,
+					Images = of.Images.First(),
 					Price = of.Price,
 					CreatedOn = of.CreatedOn,
 					Description = of.Description,
