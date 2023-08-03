@@ -7,13 +7,7 @@
 @model IEnumerable<OfferViewModel>
 
 <style>
-	.back-photo {
-		position: absolute;
-		right: 0;
-		bottom: 0;
-		z-index: -1;
-		opacity: 0.85;
-	}
+	
 
 	/*Card*/
 	.card {
@@ -209,7 +203,7 @@
 
 </style>
 
-<img class="back-photo" src="/photos/369182.jpg"/>
+<body style="background-color:lightseagreen">
 
 <video class="w-100" autoplay loop muted>
 	<source src="/videos/Modifying an Orpheus 2000 sedan.mp4" type="video/mp4" />
@@ -218,28 +212,31 @@
 <div class="alert alert-secondary" role="alert">
   @ViewBag.InfoMessage
 </div>
-	<div class="row">
-		@foreach (var item in Model)
-		{
-			<div class="card">
+<div class="row">
+	@foreach (var item in Model)
+	{
+		<div class="card">
 			<a href="#" class ="text-decoration">
 				<div class="card__img"><img src="@item.Images.PhotoPath" class="card-img-top" height="225px"/></div>
 				<div class="card__title">@item.Title</div>
-			<div class="card__wrapper">
-				<div class="card__subtitle">@item.Price lv.</div>
-				<div class="card__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" style="user-select: none; width: 100%; height: 100%; display: inline-block; fill: rgb(224, 223, 220); flex-shrink: 0; cursor: auto;" color="rgb(224, 223, 220)"><g color="rgb(224, 223, 220)"><circle cx="128" cy="128" r="96" opacity="0.2"></circle><circle cx="128" cy="128" r="96" fill="none" stroke="rgb(224, 223, 220)" stroke-miterlimit="10" stroke-width="16"></circle><polyline points="134.1 161.9 168 128 134.1 94.1" fill="none" stroke="rgb(224, 223, 220)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><line x1="88" y1="128" x2="168" y2="128" fill="none" stroke="rgb(224, 223, 220)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></g></svg></div>
+				<div class="card__wrapper">
+					<div class="card__subtitle">@item.Price lv.</div>
+					<div class="card__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" style="user-select: none; width: 100%; height: 100%; display: inline-block; fill: rgb(224, 223, 220); flex-shrink: 0; cursor: auto;" color="rgb(224, 223, 220)"><g color="rgb(224, 223, 220)"><circle cx="128" cy="128" r="96" opacity="0.2"></circle><circle cx="128" cy="128" r="96" fill="none" stroke="rgb(224, 223, 220)" stroke-miterlimit="10" stroke-width="16"></circle><polyline points="134.1 161.9 168 128 134.1 94.1" fill="none" stroke="rgb(224, 223, 220)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></polyline><line x1="88" y1="128" x2="168" y2="128" fill="none" stroke="rgb(224, 223, 220)" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"></line></g></svg></div>
 
-			</div>
+				</div>
 			</a>
-			</div>
-		}
-		<div class="d-flex justify-content-center">
-			<button class="show-more">
-				<span class="circle" aria-hidden="true">
-					<span class="icon arrow"></span>
-				</span>
-				<span class="button-text">Show All</span>
-			</button>
 		</div>
+	}
+	<a asp-controller="FilterCar" asp-action="Index">
+	<div class="d-flex justify-content-center">
+		<button class="show-more">
+			<span class="circle" aria-hidden="true">
+				<span class="icon arrow"></span>
+			</span>
+			<span class="button-text">Show All</span>
+		</button>
 	</div>
+	</a>
+</div>
+</body>
 <script src="~/lib/jquery/dist/jquery.js"></script>

@@ -5,14 +5,6 @@
 }
 <style>
 
-	.back-photo {
-		position: absolute;
-		right: 0;
-		bottom: 0;
-		z-index: -1;
-		opacity: 0.85;
-	}
-
 	.filter-card {
 		width: auto;
 		height: auto;
@@ -139,9 +131,38 @@
 		font-size: inherit;
 		font-family: inherit;
 	}
+	
+	/*Back-button*/
+	.btn-class-name {
+		--primary: 80, 180, 250;
+		--secondary: 255, 255, 255;
+		border-radius: .6em;
+		transition: .3s;
+		background: #00bfff;
+		color:white;
+		font-family: sans-serif;
+		font-weight: bold;
+		font-size: 16px;
+		cursor: pointer;
+		letter-spacing: 0.05em;
+		border: none;
+		outline: none;
+		width: 100px;
+		height: 45px;
+	}
+
+	.btn-class-name:hover {
+		filter: brightness(1.2);
+		box-shadow: 0 0 0 5px #00bfff;
+	}
+
+	.btn-class-name:active {
+		transition: 0s;
+		box-shadow: 0 0 0 5px #ffffff;
+	}
 </style>
 
-<img class="back-photo" src="/photos/369182.jpg" />
+<body style="background-color:lightseagreen" >
 @if (isGetRequest)
 {
 	<div class="filter-card">
@@ -221,7 +242,15 @@
 		</form>
 	</div>
 }
-<div class="row">
+@if (isPostRequest)
+	{
+		<form asp-action="Index" method="get">
+		<button type="submit" class="btn-class-name">
+			&lt; Back
+		</button>
+	    </form>
+	}
+	<div class="row">
 	@foreach (var item in ViewBag.CarsToShow)
 	{
 		<div class="card">
@@ -237,7 +266,7 @@
 		</div>
 	}
 </div>
-
+</body>
 @section scripts{
 	<script>
 		$(document).ready(function () {
