@@ -142,7 +142,7 @@
 		border-radius: 1.625rem;
 	}
 
-				button.show-more .circle .icon {
+	button.show-more .circle .icon {
 		transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
 		position: absolute;
 		top: 0;
@@ -216,7 +216,10 @@
 	@foreach (var item in Model)
 	{
 		<div class="card">
-			<a href="#" class ="text-decoration">
+			<form asp-controller="Profile" asp-action="Like" asp-route-id="@item.Id">
+				<button type="submit" class="btn btn-primary" data-offer-id="@item.Id">Like</button>
+			</form>
+			<a href="#" class="text-decoration">
 				<div class="card__img"><img src="@item.Images.PhotoPath" class="card-img-top" height="225px"/></div>
 				<div class="card__title">@item.Title</div>
 				<div class="card__wrapper">

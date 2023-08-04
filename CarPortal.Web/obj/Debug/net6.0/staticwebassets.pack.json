@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\OfferImages\\test3.jpg"
     },
     {
+      "Id": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\Profile\\Explain of Profile Folder.txt",
+      "PackagePath": "staticwebassets\\Profile\\Explain of Profile Folder.txt"
+    },
+    {
       "Id": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

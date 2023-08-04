@@ -160,6 +160,26 @@
 		transition: 0s;
 		box-shadow: 0 0 0 5px #ffffff;
 	}
+	
+	/*Like-Button*/
+	.large-font{
+		font-size:xxx-large;
+	}
+	.top-20{
+		position:relative;
+		top:20vh;
+	}
+	ion-icon.active{
+		animation:like 0.5s 1;
+		fill:red;
+		stroke:none;
+	}
+	ion-icon{
+		fill:transparent;
+		stroke:black;
+		stroke-width:30;
+		transition:all 0.5s;
+	}
 </style>
 
 <body style="background-color:lightseagreen" >
@@ -254,7 +274,16 @@
 	@foreach (var item in ViewBag.CarsToShow)
 	{
 		<div class="card">
-			<a href="#" class ="text-decoration">
+			<form asp-controller="Profile" asp-action="Like" asp-route-id="@item.Id">
+				<a>
+				<div class='large-font text-center top-20'>
+					<ion-icon name="heart">
+						<div class='red-bg'></div>
+					</ion-icon>
+				</div>
+				</a>
+			</form>
+			<a href="#" class="text-decoration">
 				<div class="card__img"><img src="@item.Images.PhotoPath" class="card-img-top" height="225px"/></div>
 				<div class="card__title">@item.Title</div>
 				<div class="card__wrapper">
@@ -312,6 +341,10 @@
 				});
 			});
 		});
+		let icon = document.querySelector('ion-icon');
+icon.onclick = function(){
+  icon.classList.toggle('active');
+}
 	</script>
 	<partial name="_ValidationScriptsPartial" />
 }

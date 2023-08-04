@@ -10,6 +10,7 @@ namespace CarPortal.Data.Models
         public ApplicationUser()
         {
             Id = Guid.NewGuid();
+            Likes = new List<Like>();
         }
         [Required]
         [MaxLength(FirstNameMaxLength)]
@@ -23,5 +24,7 @@ namespace CarPortal.Data.Models
         public int RegionId { get; set; }
 
         public Region? Region { get; set; } = null!;
+
+        public ICollection<Like> Likes { get; set; }
     }
 }

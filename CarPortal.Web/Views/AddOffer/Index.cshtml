@@ -6,6 +6,8 @@
 @model CarPortal.Web.ViewModels.AddOffer.AddOfferViewModel
 @inject IAddOfferService service
 
+<body style="background-color:lightseagreen">
+
 <form method="POST" asp-controller="AddOffer" asp-action="Index" enctype="multipart/form-data">
 	<div>
 		<label >Title</label>
@@ -74,7 +76,7 @@
 	<button type="submit" class="btn btn-primary">Create</button>
 
 </form>
-
+</body>
 
 @section scripts{
 	<script>

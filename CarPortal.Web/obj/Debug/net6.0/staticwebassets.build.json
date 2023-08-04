@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8OlFH5mcrBC3qTDQ0X2ep0mgoFzG7uisTbUSiW6kmPw=",
+  "Hash": "xWVlIYKABUuh55nqbHZtQYzXvEs5kH5BdGB6xv9Am8U=",
   "Source": "CarPortal.Web",
   "BasePath": "_content/CarPortal.Web",
   "Mode": "Default",
@@ -2276,6 +2276,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\photos\\Untitled design.png"
+    },
+    {
+      "Identity": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\Profile\\Explain of Profile Folder.txt",
+      "SourceId": "CarPortal.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\",
+      "BasePath": "_content/CarPortal.Web",
+      "RelativePath": "Profile/Explain of Profile Folder.txt",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Profile\\Explain of Profile Folder.txt"
     },
     {
       "Identity": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\videos\\Modifying an Orpheus 2000 sedan.mp4",

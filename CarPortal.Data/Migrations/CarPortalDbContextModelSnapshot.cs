@@ -107,7 +107,7 @@ namespace CarPortal.Data.Migrations
                         {
                             Id = new Guid("3ba0e94f-d15f-4911-9bd0-e10e9d89397f"),
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8708ca08-e3b7-486e-9eae-ca632db782f7",
+                            ConcurrencyStamp = "afd51c9c-1774-4a06-9721-d24f92ae6114",
                             Email = "ceca@lepa.sr",
                             EmailConfirmed = false,
                             FirstName = "Ceca",
@@ -459,6 +459,32 @@ namespace CarPortal.Data.Migrations
                             OfferId = new Guid("87745040-aaf7-426e-a211-d86d80085213"),
                             PhotoPath = "OfferImages/test3.jpg"
                         });
+                });
+
+            modelBuilder.Entity("CarPortal.Data.Models.Like", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("LikeDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("OfferId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OfferId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Likes");
                 });
 
             modelBuilder.Entity("CarPortal.Data.Models.Make", b =>
@@ -1146,9 +1172,7 @@ namespace CarPortal.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedOn")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 7, 22, 19, 53, 8, 742, DateTimeKind.Utc).AddTicks(5705));
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -1560,6 +1584,25 @@ namespace CarPortal.Data.Migrations
                     b.Navigation("Offer");
                 });
 
+            modelBuilder.Entity("CarPortal.Data.Models.Like", b =>
+                {
+                    b.HasOne("CarPortal.Data.Models.Offer", "Offer")
+                        .WithMany("Likes")
+                        .HasForeignKey("OfferId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CarPortal.Data.Models.ApplicationUser", "User")
+                        .WithMany("Likes")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Offer");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("CarPortal.Data.Models.Model", b =>
                 {
                     b.HasOne("CarPortal.Data.Models.Category", "Category")
@@ -1649,6 +1692,11 @@ namespace CarPortal.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("CarPortal.Data.Models.ApplicationUser", b =>
+                {
+                    b.Navigation("Likes");
+                });
+
             modelBuilder.Entity("CarPortal.Data.Models.Car", b =>
                 {
                     b.Navigation("Offer")
@@ -1688,6 +1736,8 @@ namespace CarPortal.Data.Migrations
             modelBuilder.Entity("CarPortal.Data.Models.Offer", b =>
                 {
                     b.Navigation("Images");
+
+                    b.Navigation("Likes");
                 });
 
             modelBuilder.Entity("CarPortal.Data.Models.Region", b =>

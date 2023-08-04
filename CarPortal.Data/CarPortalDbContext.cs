@@ -33,10 +33,23 @@ namespace CarPortal.Data
 
         public DbSet<Image> Images { get; set; } = null!;
 
+        public DbSet<Like> Likes { get; set; } = null!;
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
+	        builder.Entity<Like>()
+		        .HasOne(l => l.User)
+		        .WithMany(u => u.Likes)
+		        .HasForeignKey(l => l.UserId)
+		        .OnDelete(DeleteBehavior.Restrict);
 
-	        Assembly configAssembly = Assembly.GetAssembly(typeof(CarPortalDbContext)) ??
+			builder.Entity<Like>()
+		        .HasOne(l => l.Offer)
+		        .WithMany(o => o.Likes)
+		        .HasForeignKey(l => l.OfferId)
+		        .OnDelete(DeleteBehavior.Cascade);
+
+			Assembly configAssembly = Assembly.GetAssembly(typeof(CarPortalDbContext)) ??
 	                                  Assembly.GetExecutingAssembly();
             builder.ApplyConfigurationsFromAssembly(configAssembly);
 

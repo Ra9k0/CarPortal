@@ -40,5 +40,6 @@ namespace CarPortal.Data.Models
         public DateTime CreatedOn { get; set; }
 
         public ICollection<Image> Images { get; set; }
-    }
+        public ICollection<Like> Likes { get; set; }
+	}
 }
