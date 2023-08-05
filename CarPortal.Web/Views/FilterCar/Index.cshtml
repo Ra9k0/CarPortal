@@ -9,7 +9,7 @@
 		width: auto;
 		height: auto;
 		border-radius: 30px;
-		background: #00bfff;
+		background: #00587A;
 		box-shadow: 15px 15px 30px rgb(25, 25, 25),
 		            -15px -15px 30px rgb(60, 60, 60);
 	}
@@ -17,9 +17,9 @@
 	/*Card*/
 	.card {
 		--main-color: #323232;
-		--sub-color: #00bfff;
-		--bg-color: #c7c7c7;
-		--accent-color: #00bfff;
+		--sub-color: #00587A;
+		--bg-color: #E7E7DE;
+		--accent-color: #00587A;
 		margin-left: 30px;
 		margin-bottom: 30px;
 		margin-top: 30px;
@@ -138,7 +138,7 @@
 		--secondary: 255, 255, 255;
 		border-radius: .6em;
 		transition: .3s;
-		background: #00bfff;
+		background: #00587A;
 		color:white;
 		font-family: sans-serif;
 		font-weight: bold;
@@ -153,36 +153,46 @@
 
 	.btn-class-name:hover {
 		filter: brightness(1.2);
-		box-shadow: 0 0 0 5px #00bfff;
+			box-shadow: 0 0 0 5 #E7E7DE;
 	}
 
 	.btn-class-name:active {
 		transition: 0s;
 		box-shadow: 0 0 0 5px #ffffff;
 	}
+
+	/*search-button*/
+	.btn-class-name-search {
+		--primary: 80, 180, 250;
+		--secondary: 255, 255, 255;
+		border-radius: .6em;
+		transition: .3s;
+		background: #E7E7DE;
+		color: #00587A;
+		font-family: sans-serif;
+		font-weight: bold;
+		font-size: 16px;
+		cursor: pointer;
+		letter-spacing: 0.05em;
+		border: none;
+		outline: none;
+		width: 100px;
+		height: 45px;
+	}
+
+	.btn-class-name-search:hover {
+		filter: brightness(1.2);
+		box-shadow: 0 0 0 5 #E7E7DE;
+	}
+
+	.btn-class-name-search :active {
+		transition: 0s;
+		box-shadow: 0 0 0 5px #ffffff;
+	}
 	
-	/*Like-Button*/
-	.large-font{
-		font-size:xxx-large;
-	}
-	.top-20{
-		position:relative;
-		top:20vh;
-	}
-	ion-icon.active{
-		animation:like 0.5s 1;
-		fill:red;
-		stroke:none;
-	}
-	ion-icon{
-		fill:transparent;
-		stroke:black;
-		stroke-width:30;
-		transition:all 0.5s;
-	}
 </style>
 
-<body style="background-color:lightseagreen" >
+<body style="background-color:#008891">
 @if (isGetRequest)
 {
 	<div class="filter-card">
@@ -190,7 +200,7 @@
 			<div class="row">
 				<div class="form-group col-md-6">
 					<div style="padding-top: 8px; padding-right: 7px;">
-						<label asp-for="Car.Model.Category"></label>
+							<label asp-for="Car.Model.Category" style="color: #E7E7DE"></label>
 						<select asp-for="Car.Model.CategoryId" class="form-control" asp-items="@(new SelectList(ViewBag.Categories, "Id", "Name"))">
 							<option value="0">all</option>
 						</select>
@@ -199,13 +209,13 @@
 			</div>
 			<div class="row">
 				<div style="padding-top: 8px; padding-right: 7px;" class="col">
-					<label asp-for="Car.Model.Make"></label>
+						<label asp-for="Car.Model.Make" style="color: #E7E7DE"></label>
 					<select asp-for="Car.Model.MakeId" class="form-control">
 						<option value="0">all</option>
 					</select>
 				</div>
 				<div style="padding-top: 8px; padding-right: 7px;" class="col">
-					<label asp-for="Car.Model"></label>
+						<label asp-for="Car.Model" style="color: #E7E7DE"></label>
 					<select asp-for="Car.ModelId" class="form-control">
 						<option value="0">all</option>
 					</select>
@@ -213,29 +223,29 @@
 			</div>
 			<div class="row">
 				<div style="padding-top: 8px; padding-right: 7px;" class="col">
-					<label asp-for="Price">Maximum Price</label>
+						<label asp-for="Price" style="color: #E7E7DE">Maximum Price</label>
 					<input asp-for="Price" type="text" class="form-control">
 				</div>
 				<div style="padding-top: 8px; padding-right: 7px;" class="col">
-					<label asp-for="Car.ManufactureYear">Minimum Year</label>
+						<label asp-for="Car.ManufactureYear" style="color: #E7E7DE">Minimum Year</label>
 					<input asp-for="Car.ManufactureYear" type="text" class="form-control">
 				</div>
 			</div>
 			<div class="row">
 				<div style="padding-top: 8px; padding-right: 7px;" class="col">
-					<label>EngineType</label>
+						<label style="color: #E7E7DE">EngineType</label>
 					<select asp-for="Car.EngineTypeId" class="form-control" asp-items="@(new SelectList(ViewBag.EngineTypes, "Id", "Type"))">
 						<option value="0">all</option>
 					</select>
 				</div>
 				<div style="padding-top: 8px; padding-right: 7px;" class="col">
-					<label>Color</label>
+						<label style="color: #E7E7DE">Color</label>
 					<select asp-for="Car.ColorId" class="form-control" asp-items="@(new SelectList(ViewBag.Colors, "Id", "Name"))">
 						<option value="0">all</option>
 					</select>
 				</div>
 				<div style="padding-top: 8px; padding-right: 7px;" class="col">
-					<label>Condition</label>
+						<label style="color: #E7E7DE">Condition</label>
 					<select asp-for="Car.ConditionId" class="form-control" asp-items="@(new SelectList(ViewBag.Conditions, "Id", "Name"))">
 						<option value="0">all</option>
 					</select>
@@ -243,13 +253,13 @@
 			</div>
 			<div class="row">
 				<div style="padding-top: 8px; padding-right: 7px;" class="col">
-					<label>Region</label>
+						<label style="color: #E7E7DE">Region</label>
 					<select asp-for="RegionId" class="form-control" asp-items="@(new SelectList(ViewBag.Regions, "Id", "Name"))">
 						<option value="0">all</option>
 					</select>
 				</div>
 				<div style="padding-top: 8px; padding-right: 7px;" class="col">
-					<label>Order by</label>
+						<label style="color: #E7E7DE">Order by</label>
 					<select class="form-control" name="orderer">
 						<option value="CreatedOnDescending">Upload Date: Newest First</option>
 						<option value="CreatedOnAscending">Upload Date: Oldest First</option>
@@ -258,7 +268,7 @@
 					</select>
 				</div>
 			</div>
-			<button style="margin: 20px" type="submit" class="btn btn-primary">Search</button>
+				<button style="margin: 20px;" class="btn-class-name-search" type="submit">Search</button>
 		</form>
 	</div>
 }
@@ -275,15 +285,9 @@
 	{
 		<div class="card">
 			<form asp-controller="Profile" asp-action="Like" asp-route-id="@item.Id">
-				<a>
-				<div class='large-font text-center top-20'>
-					<ion-icon name="heart">
-						<div class='red-bg'></div>
-					</ion-icon>
-				</div>
-				</a>
+				
 			</form>
-			<a href="#" class="text-decoration">
+			<a asp-controller="Offer" asp-action="Details" asp-route-offerId="@item.Id" class="text-decoration">
 				<div class="card__img"><img src="@item.Images.PhotoPath" class="card-img-top" height="225px"/></div>
 				<div class="card__title">@item.Title</div>
 				<div class="card__wrapper">
@@ -341,10 +345,7 @@
 				});
 			});
 		});
-		let icon = document.querySelector('ion-icon');
-icon.onclick = function(){
-  icon.classList.toggle('active');
-}
+
 	</script>
 	<partial name="_ValidationScriptsPartial" />
 }

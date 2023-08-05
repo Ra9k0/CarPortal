@@ -1,0 +1,150 @@
+﻿@using Microsoft.EntityFrameworkCore.Metadata.Internal
+<style>
+	* {box-sizing:border-box}
+	
+	.slideshow-container {
+		max-width: 1000px;
+		position: relative;
+		margin: auto;
+	}
+	
+	.mySlides {
+		display: none;
+		box-shadow: 15px 15px 30px rgb(25, 25, 25), -15px -15px 30px rgb(60, 60, 60);
+	}
+	
+	.prev, .next {
+		cursor: pointer;
+		position: absolute;
+		top: 50%;
+		width: auto;
+		margin-top: -22px;
+		padding: 16px;
+		color: #00587A;
+		font-weight: bold;
+		font-size: 18px;
+		transition: 0.6s ease;
+		border-radius: 0 3px 3px 0;
+		user-select: none;
+		text-decoration: none;
+	}
+	
+	.next {
+		right: 0;
+		border-radius: 3px 0 0 3px;
+	}
+	
+	.prev:hover, .next:hover {
+		background-color: rgba(0,0,0,0.8);
+	}
+	
+	.text {
+		color: #f2f2f2;
+		font-size: 15px;
+		padding: 8px 12px;
+		position: absolute;
+		bottom: 8px;
+		width: 100%;
+		text-align: center;
+	}
+	
+	.numbertext {
+		color: #f2f2f2;
+		font-size: 12px;
+		padding: 8px 12px;
+		position: absolute;
+		top: 0;
+	}
+
+	.dot {
+		cursor: pointer;
+		height: 15px;
+		width: 15px;
+		margin: 0 2px;
+		background-color: #bbb;
+		border-radius: 50%;
+		display: inline-block;
+		transition: background-color 0.6s ease;
+	}
+
+	.active, .dot:hover {
+		background-color: #717171;
+	}
+
+	.details-card {
+		width: auto;
+		height: auto;
+		margin: 30px;
+		border-radius: 30px;
+		background: #E7E7DE;
+		box-shadow: 15px 15px 30px rgb(25, 25, 25), -15px -15px 30px rgb(60, 60, 60);
+	}
+
+</style>
+
+<div class="slideshow-container">
+	
+	@foreach(var image in ViewBag.Offer.Images)
+	{
+		<div class="mySlides">
+			<img src="~/@image.PhotoPath" style="width: 100%; border: 41px solid  #E7E7DE">
+		</div>
+	}
+	
+	<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+	<a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+
+<body style="background-color:#008891">
+
+<div style="text-align: center">
+	@for (int i = 1; i <= ViewBag.Offer.Images.Count; i++)
+	{
+		<span class="dot" onclick="currentSlide(@i)"></span>
+	}
+</div>
+<div class="details-card">
+	<div class="row" style="margin-left: 20px;" >
+		<div class="col-9" style="margin-top: 20px;">
+			<h1>@ViewBag.Offer.Title</h1>
+		</div>
+		<div class="col" style="margin-top: 20px;">
+				<h2 style="margin-top: 15px; color: #00587A">@ViewBag.Offer.Price lv.</h2>
+		</div>
+	</div>
+	<div style="margin-left: 20px; margin-top: 20px; margin-right:20px">
+			<h3>@ViewBag.Offer.Description</h3>
+	</div>
+</div>
+
+</body>
+<script>
+	let slideIndex = 1;
+	showSlides(slideIndex);
+	
+	function plusSlides(n) {
+		showSlides(slideIndex += n);
+	}
+	
+	function currentSlide(n) {
+		showSlides(slideIndex = n);
+	}
+
+	function showSlides(n) {
+		let i;
+		let slides = document.getElementsByClassName("mySlides");
+		let dots = document.getElementsByClassName("dot");
+		if (n > slides.length) { slideIndex = 1 }
+		if (n < 1) { slideIndex = slides.length }
+		for (i = 0; i < slides.length; i++) {
+			slides[i].style.display = "none";
+		}
+		for (i = 0; i < dots.length; i++) {
+			dots[i].className = dots[i].className.replace(" active", "");
+		}
+		slides[slideIndex - 1].style.display = "block";
+		dots[slideIndex - 1].className += " active";
+	}
+</script>
+

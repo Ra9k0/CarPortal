@@ -5,8 +5,32 @@
       "PackagePath": "staticwebassets\\CarPortal.Web.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\OfferImages\\15a00583-4289-4f8f-97a5-92d64e6797de.jpg",
+      "PackagePath": "staticwebassets\\OfferImages\\15a00583-4289-4f8f-97a5-92d64e6797de.jpg"
+    },
+    {
+      "Id": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\OfferImages\\17847c2e-6013-42e3-9899-a788a9a52e16.jpg",
+      "PackagePath": "staticwebassets\\OfferImages\\17847c2e-6013-42e3-9899-a788a9a52e16.jpg"
+    },
+    {
       "Id": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\OfferImages\\36337fad-6c43-4a86-aeea-c31c24ccdeed.jpg",
       "PackagePath": "staticwebassets\\OfferImages\\36337fad-6c43-4a86-aeea-c31c24ccdeed.jpg"
+    },
+    {
+      "Id": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\OfferImages\\42b30059-9232-4588-883a-df05994e9469.jpg",
+      "PackagePath": "staticwebassets\\OfferImages\\42b30059-9232-4588-883a-df05994e9469.jpg"
+    },
+    {
+      "Id": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\OfferImages\\619dcd72-477f-40db-abd4-ef5c98944b1c.jpg",
+      "PackagePath": "staticwebassets\\OfferImages\\619dcd72-477f-40db-abd4-ef5c98944b1c.jpg"
+    },
+    {
+      "Id": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\OfferImages\\6bc010c5-cf4e-4f20-a815-77146b0a2631.jpg",
+      "PackagePath": "staticwebassets\\OfferImages\\6bc010c5-cf4e-4f20-a815-77146b0a2631.jpg"
+    },
+    {
+      "Id": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\OfferImages\\9f9606e3-5f72-4af9-b3df-e403e3bb1f1a.jpg",
+      "PackagePath": "staticwebassets\\OfferImages\\9f9606e3-5f72-4af9-b3df-e403e3bb1f1a.jpg"
     },
     {
       "Id": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\OfferImages\\c3f9fb4e-9a79-46c9-b27b-8d7a6c46d555.jpg",
@@ -25,8 +49,8 @@
       "PackagePath": "staticwebassets\\OfferImages\\test3.jpg"
     },
     {
-      "Id": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\Profile\\Explain of Profile Folder.txt",
-      "PackagePath": "staticwebassets\\Profile\\Explain of Profile Folder.txt"
+      "Id": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\Offer\\Explain of Profile Folder.txt",
+      "PackagePath": "staticwebassets\\Offer\\Explain of Profile Folder.txt"
     },
     {
       "Id": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\css\\site.css",

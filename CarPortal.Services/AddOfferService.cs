@@ -132,7 +132,7 @@ namespace CarPortal.Services
 
 		private async Task<ICollection<Image>> GetImages(AddOfferViewModel offer)
 		{
-			HashSet<Image> imagesList = new HashSet<Image>();
+			List<Image> imagesList = new List<Image>();
 			if (offer.ImageFiles != null && offer.ImageFiles.Count > 0)
 			{
 
