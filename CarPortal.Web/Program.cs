@@ -4,12 +4,13 @@ using CarPortal.Services;
 using CarPortal.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CarPortal.Web
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
             var configuration = builder.Configuration;
@@ -35,8 +36,9 @@ namespace CarPortal.Web
                     options.Password.RequireUppercase = false;
                     options.Password.RequireLowercase = false;
                 })
-                .AddEntityFrameworkStores<CarPortalDbContext>();
-            
+	            .AddRoles<IdentityRole<Guid>>()
+				.AddEntityFrameworkStores<CarPortalDbContext>();
+
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddScoped<IUserService, UserService>();
@@ -71,7 +73,49 @@ namespace CarPortal.Web
             app.MapDefaultControllerRoute();
             app.MapRazorPages();
 
-            app.Run();
+            using (var scope = app.Services.CreateScope())
+            {
+	            var roleManager =
+		            scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
+
+	            var roles = new[] { "Admin", "User" };
+
+	            foreach (var role in roles)
+	            {
+		            if (!await roleManager.RoleExistsAsync(role))
+		            {
+			            await roleManager.CreateAsync(new IdentityRole<Guid>(role));
+		            }
+	            }
+            }
+
+            using (var scope = app.Services.CreateScope())
+            {
+	            var userManager =
+		            scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
+	            const string firstName = "Admin";
+	            const string lastName = "Adminov";
+	            const string email = "admin@admin.com";
+	            const string password = "Admin1337!";
+	            const int regionId = 21;
+
+                if (await userManager.FindByEmailAsync(email) == null)
+                {
+	                var user = new ApplicationUser();
+                    user.UserName = email;
+                    user.Email = email;
+                    user.FirstName = firstName;
+                    user.LastName = lastName;
+                    user.RegionId = regionId;
+
+                    await userManager.CreateAsync(user, password);
+
+                    await userManager.AddToRoleAsync(user, "Admin");
+                }
+            }
+
+			app.Run();
         }
     }
 }
