@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarPortal.Web.ViewModels", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{27A9962A-52E9-4753-A485-E3DF6B5F36A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarPortal.Services", "CarPortal.Services\CarPortal.Services.csproj", "{3CC24878-A1C4-4D0F-89EE-7C24EFC18185}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarPortal.Services", "CarPortal.Services\CarPortal.Services.csproj", "{3CC24878-A1C4-4D0F-89EE-7C24EFC18185}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarPortal.UnitTests", "CarPortal.UnitTests\CarPortal.UnitTests.csproj", "{5E7C4C5C-7C63-4DDC-91E7-CD4BADB593DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{3CC24878-A1C4-4D0F-89EE-7C24EFC18185}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CC24878-A1C4-4D0F-89EE-7C24EFC18185}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CC24878-A1C4-4D0F-89EE-7C24EFC18185}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E7C4C5C-7C63-4DDC-91E7-CD4BADB593DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E7C4C5C-7C63-4DDC-91E7-CD4BADB593DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E7C4C5C-7C63-4DDC-91E7-CD4BADB593DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E7C4C5C-7C63-4DDC-91E7-CD4BADB593DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -797,3 +797,4 @@ C:\Users\21_1\Documents\GitHub\CarPortal\CarPortal.Web\obj\Debug\net6.0\refint\C
 C:\Users\21_1\Documents\GitHub\CarPortal\CarPortal.Web\obj\Debug\net6.0\CarPortal.Web.pdb
 C:\Users\21_1\Documents\GitHub\CarPortal\CarPortal.Web\obj\Debug\net6.0\CarPortal.Web.genruntimeconfig.cache
 C:\Users\21_1\Documents\GitHub\CarPortal\CarPortal.Web\obj\Debug\net6.0\ref\CarPortal.Web.dll
+C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.Web\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.Google.dll

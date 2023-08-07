@@ -12,9 +12,16 @@ namespace CarPortal.Web
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            var configuration = builder.Configuration;
 
-            // Add services to the container.
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+            builder.Services.AddAuthentication().AddGoogle(googleOptions =>
+            {
+	            googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
+	            googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
+            });
+
+			// Add services to the container.
+			var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             builder.Services.AddDbContext<CarPortalDbContext>(options =>
                 options.UseSqlServer(connectionString),ServiceLifetime.Scoped);
            
@@ -41,8 +48,8 @@ namespace CarPortal.Web
 
 			var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
+			// Configure the HTTP request pipeline.
+			if (app.Environment.IsDevelopment())
             {
                 app.UseMigrationsEndPoint();
             }

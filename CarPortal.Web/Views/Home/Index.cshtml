@@ -216,10 +216,7 @@
 	@foreach (var item in Model)
 	{
 		<div class="card">
-			<form asp-controller="Profile" asp-action="Like" asp-route-id="@item.Id">
-				<button type="submit" class="btn btn-primary" data-offer-id="@item.Id">Like</button>
-			</form>
-			<a href="#" class="text-decoration">
+			<a asp-controller="Offer" asp-action="Details" asp-route-offerId="@item.Id" class="text-decoration">
 				<div class="card__img"><img src="@item.Images.PhotoPath" class="card-img-top" height="225px"/></div>
 				<div class="card__title">@item.Title</div>
 				<div class="card__wrapper">

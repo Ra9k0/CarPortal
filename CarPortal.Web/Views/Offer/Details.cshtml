@@ -1,53 +1,51 @@
 ﻿@using Microsoft.EntityFrameworkCore.Metadata.Internal
 <style>
-	* {box-sizing:border-box}
-	
+	* { box-sizing: border-box }
+
 	.slideshow-container {
+		margin: auto;
 		max-width: 1000px;
 		position: relative;
-		margin: auto;
 	}
-	
+
 	.mySlides {
-		display: none;
 		box-shadow: 15px 15px 30px rgb(25, 25, 25), -15px -15px 30px rgb(60, 60, 60);
+		display: none;
 	}
-	
+
 	.prev, .next {
+		border-radius: 0 3px 3px 0;
+		color: #00587A;
 		cursor: pointer;
-		position: absolute;
-		top: 50%;
-		width: auto;
+		font-size: 18px;
+		font-weight: bold;
 		margin-top: -22px;
 		padding: 16px;
-		color: #00587A;
-		font-weight: bold;
-		font-size: 18px;
-		transition: 0.6s ease;
-		border-radius: 0 3px 3px 0;
-		user-select: none;
+		position: absolute;
 		text-decoration: none;
+		top: 50%;
+		transition: 0.6s ease;
+		user-select: none;
+		width: auto;
 	}
-	
+
 	.next {
-		right: 0;
 		border-radius: 3px 0 0 3px;
+		right: 0;
 	}
-	
-	.prev:hover, .next:hover {
-		background-color: rgba(0,0,0,0.8);
-	}
-	
+
+	.prev:hover, .next:hover { background-color: rgba(0, 0, 0, 0.8); }
+
 	.text {
+		bottom: 8px;
 		color: #f2f2f2;
 		font-size: 15px;
 		padding: 8px 12px;
 		position: absolute;
-		bottom: 8px;
-		width: 100%;
 		text-align: center;
+		width: 100%;
 	}
-	
+
 	.numbertext {
 		color: #f2f2f2;
 		font-size: 12px;
@@ -57,68 +55,113 @@
 	}
 
 	.dot {
-		cursor: pointer;
-		height: 15px;
-		width: 15px;
-		margin: 0 2px;
 		background-color: #bbb;
 		border-radius: 50%;
+		cursor: pointer;
 		display: inline-block;
+		height: 15px;
+		margin: 0 2px;
 		transition: background-color 0.6s ease;
+		width: 15px;
 	}
 
-	.active, .dot:hover {
-		background-color: #717171;
-	}
+	.active, .dot:hover { background-color: #717171; }
 
 	.details-card {
-		width: auto;
+		background: #E7E7DE;
+		border-radius: 30px;
+		box-shadow: 15px 15px 30px rgb(25, 25, 25), -15px -15px 30px rgb(60, 60, 60);
 		height: auto;
 		margin: 30px;
-		border-radius: 30px;
-		background: #E7E7DE;
-		box-shadow: 15px 15px 30px rgb(25, 25, 25), -15px -15px 30px rgb(60, 60, 60);
+		width: auto;
 	}
+
+	/*Like-Button*/
+
+	.con-like {
+		--red: rgb(255, 50, 50);
+		height: 50px;
+		position: relative;
+		width: 50px;
+	}
+
+	.con-like .like {
+		cursor: pointer;
+		height: 100%;
+		opacity: 0;
+		position: absolute;
+		width: 100%;
+		z-index: 20;
+	}
+
+	.con-like .checkmark {
+		align-items: center;
+		display: flex;
+		height: 100%;
+		justify-content: center;
+		width: 100%;
+	}
+
+	.con-like .outline,
+	.con-like .filled {
+		fill: var(--red);
+		position: absolute;
+	}
+
 
 </style>
 
 <div class="slideshow-container">
-	
-	@foreach(var image in ViewBag.Offer.Images)
+	@foreach (var image in ViewBag.Offer.Images)
 	{
 		<div class="mySlides">
-			<img src="~/@image.PhotoPath" style="width: 100%; border: 41px solid  #E7E7DE">
+			<img src="~/@image.PhotoPath" style="width: 100%; border: 41px solid #E7E7DE">
 		</div>
 	}
-	
+
 	<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 	<a class="next" onclick="plusSlides(1)">&#10095;</a>
 </div>
 <br>
 
-<body style="background-color:#008891">
+<body style="background-color: #008891">
 
 <div style="text-align: center">
-	@for (int i = 1; i <= ViewBag.Offer.Images.Count; i++)
+	@for (var i = 1; i <= ViewBag.Offer.Images.Count; i++)
 	{
 		<span class="dot" onclick="currentSlide(@i)"></span>
 	}
 </div>
 <div class="details-card">
-	<div class="row" style="margin-left: 20px;" >
+	<div class="row" style="margin-left: 20px;">
 		<div class="col-9" style="margin-top: 20px;">
 			<h1>@ViewBag.Offer.Title</h1>
 		</div>
-		<div class="col" style="margin-top: 20px;">
-				<h2 style="margin-top: 15px; color: #00587A">@ViewBag.Offer.Price lv.</h2>
+		<div class="col" style="margin-top: 20px; margin-left: 190px;">
+			<form method="post" action="@Url.Action("Like", "Profile", new { id = ViewBag.Offer.Id, returnUrl = Context.Request.Path + Context.Request.QueryString })">
+				<button type="submit">
+					<div class="con-like">
+						<div class="checkmark">
+							<svg xmlns="http://www.w3.org/2000/svg" class="outline" viewBox="0 0 24 24">
+								<path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z"></path>
+							</svg>
+							<svg xmlns="http://www.w3.org/2000/svg" height="100" width="100"></svg>
+						</div>
+					</div>
+				</button>
+			</form>
 		</div>
 	</div>
-	<div style="margin-left: 20px; margin-top: 20px; margin-right:20px">
-			<h3>@ViewBag.Offer.Description</h3>
+		<div style="margin-bottom: 20px; margin-left: 20px;">
+		<h2 style="margin-bottom: 15px; color: #00587A">@ViewBag.Offer.Price lv.</h2>
+	</div>
+	<div style="margin-left: 20px; margin-top: 20px; margin-right: 20px">
+		<h3>@ViewBag.Offer.Description</h3>
 	</div>
 </div>
 
 </body>
+
 <script>
 	let slideIndex = 1;
 	showSlides(slideIndex);
@@ -147,4 +190,3 @@
 		dots[slideIndex - 1].className += " active";
 	}
 </script>
-

@@ -48,6 +48,16 @@ namespace CarPortal.Services
 			}
 		}
 
+		public void Dislike(Guid offerId, string userId)
+		{
+			var like = dbContext.Likes.FirstOrDefault(l => l.OfferId == offerId && l.UserId == Guid.Parse(userId));
+			if (like != null)
+			{
+				dbContext.Likes.Remove(like);
+				dbContext.SaveChanges();
+			}
+		}
+
 		public async Task<IEnumerable<OfferViewModel>> GetLikedOffersAsync(string id)
 		{
 			return await dbContext.Likes.Where(l=>l.UserId.ToString() == id).OrderByDescending(x=>x.LikeDate).Select(of=>new OfferViewModel()

@@ -17,9 +17,23 @@ namespace CarPortal.Web.Controllers
 			return View();
 		}
 
-		public IActionResult Like(Guid id)
+		[HttpPost]
+		public IActionResult Like(Guid id,string returnUrl)
 		{
-			profileService.Like(id,GetUserId()); 
+			profileService.Like(id,GetUserId());
+			if (!string.IsNullOrEmpty(returnUrl))
+			{
+				return Redirect(returnUrl);
+			}
+			
+			return RedirectToAction("Index", "Home");
+		}
+
+		public IActionResult Dislike(Guid id)
+		{
+			profileService.Dislike(id, GetUserId());
+			
+
 			return RedirectToAction("LikedOffers");
 		}
 
