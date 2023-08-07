@@ -177,7 +177,9 @@ namespace CarPortal.Web.Areas.Identity.Pages.Account
                 user.RegionId = Input.RegionId;
 
                 var result = await _userManager.CreateAsync(user);
-                if (result.Succeeded)
+
+                await _userManager.AddToRoleAsync(user, "User");
+				if (result.Succeeded)
                 {
                     result = await _userManager.AddLoginAsync(user, info);
                     if (result.Succeeded)

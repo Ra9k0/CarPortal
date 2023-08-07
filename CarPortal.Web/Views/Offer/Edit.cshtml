@@ -1,0 +1,128 @@
+﻿@using CarPortal.Services.Interfaces
+@using CarPortal.Web.ViewModels.Offer
+@{
+	ViewData["Title"] = "Edit Offer";
+	OfferEditViewModel offer = ViewBag.Offer;
+}
+@model CarPortal.Web.ViewModels.Offer.OfferEditViewModel
+@inject IOfferService service
+
+<body style="background-color:lightseagreen">
+
+<form method="post" asp-controller="Offer" asp-action="Edit" enctype="multipart/form-data">
+	<div>
+		<label >Title</label>
+			<input value="@offer.Title" asp-for="Title" type="text" class="form-control" id="Title" placeholder="Enter Title">
+		<span asp-validation-for="Title" class="text-danger"></span>
+	</div>
+	<div>
+		<label >Description</label>
+			<input value="@offer.Description" asp-for="Description" type="text" class="form-control" id="Description" placeholder="Enter Description">
+		<span asp-validation-for="Description" class="text-danger"></span>
+	</div>
+	<div style="padding-top: 8px; padding-right:7px;">
+		<label asp-for="Car.Model.Category"></label>
+		<br />
+			<select asp-for="Car.Model.CategoryId" class="form-control" asp-items="@(new SelectList(ViewBag.Categories,"Id","Name"))">
+				<option value="@offer.Model.CategoryId" >Previous selected is @offer.CategoryName</option>
+		</select>
+	</div>
+	<div style="padding-top: 8px; padding-right:7px;">
+		<label asp-for="Car.Model.Make"></label>
+		<br />
+		<select asp-for="Car.Model.MakeId" class="form-control">
+				<option value="@offer.Model.MakeId">Previous selected is @offer.MakeName</option>
+		</select>
+	</div>
+	<br />
+	<div style="padding-top:8px; padding-right:7px;">
+		<label asp-for="Car.Model">Model</label>
+		<br />
+		<select asp-for="Car.ModelId" class="form-control">
+				<option value="@offer.Model.Id">Previous selected is @offer.Model.Name</option>
+		</select>
+	</div>
+	<div>
+		<label asp-for="Car.EngineType">Engine Type</label>
+		<br />
+		<select asp-for="Car.EngineTypeId" asp-items="@(new SelectList(await service.GetAllEngineTypes(), "Id", "Type"))" class="form-control">
+				<option value="@offer.Car.EngineTypeId">Previous selected is @offer.EngineTypeName</option>
+		</select>
+	</div>
+	<div>
+		<label asp-for="Car.ManufactureYear">Year of manufacture</label>
+			<input value="@offer.Car.ManufactureYear" asp-for="Car.ManufactureYear" type="text" class="form-control" id="YearOfManufacture" placeholder="Enter Year">
+		<span asp-validation-for="Car.ManufactureYear" class="text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="Car.Color" >Color</label>
+		<br />
+		<select asp-for="Car.ColorId" asp-items="@(new SelectList(await service.GetAllColors(), "Id", "Name"))" class="form-control">
+				<option value="@offer.Car.ColorId">Previous selected is @offer.ColorName</option>
+		</select>
+	</div>
+	<div>
+		<label asp-for="Car.Condition" >Condition</label>
+		<br />
+		<select asp-for="Car.ConditionId" asp-items="@(new SelectList(await service.GetAllConditions(), "Id", "Name"))" class="form-control">
+				<option value="@offer.Car.ConditionId">Previous selected is @offer.ConditionName</option>
+		</select>
+	</div>
+	<div>
+		<label asp-for="Price">Price</label>
+			<input value="@offer.Price" asp-for="Price" type="text" class="form-control" id="Price" placeholder="Enter Price">
+		<span asp-validation-for="Price" class="text-danger"></span>
+	</div>
+	<button type="submit" class="btn btn-primary">Save</button>
+
+</form>
+</body>
+
+@section scripts{
+	<script>
+		$(document).ready(function () {
+			$("select[name='Car\\.Model\\.CategoryId']").change(function () {
+				var selectedMakeId = $(this).val();
+
+				$.ajax({
+					url: "/Offer/GetMakesList",
+					type: "GET",
+					data: { id: selectedMakeId },
+					success: function (data) {
+						var modelDropdown = $("select[name='Car\\.Model\\.MakeId']");
+						modelDropdown.empty();
+
+						$.each(data, function (index, model) {
+							modelDropdown.append($('<option></option>').val(model.id).text(model.name));
+						});
+					},
+					error: function (xhr, status, error) {
+						console.log(error);
+					}
+				});
+			});
+			$("select[name='Car\\.Model\\.MakeId']").change(function () {
+				var selectedMakeId = $(this).val();
+				var selectedCategoryId = $("select[name='Car\\.Model\\.CategoryId']").val();
+
+				$.ajax({
+					url: "/Offer/GetModelsList",
+					type: "GET",
+					data: { id: selectedMakeId, categoryId: selectedCategoryId },
+					success: function (data) {
+						var modelDropdown = $("select[name='Car\\.ModelId']");
+						modelDropdown.empty();
+
+						$.each(data, function (index, model) {
+							modelDropdown.append($('<option></option>').val(model.id).text(model.name));
+						});
+					},
+					error: function (xhr, status, error) {
+						console.log(error);
+					}
+				});
+			});
+		});
+	</script>
+	<partial name="_ValidationScriptsPartial"/>
+}

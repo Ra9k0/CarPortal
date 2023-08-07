@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using CarPortal.Data.Models;
-using CarPortal.Web.ViewModels.AddOffer;
 using static CarPortal.Common.EntityValidationConstants.Offer;
 using static CarPortal.Common.EntityValidationConstants.Car;
+using CarPortal.Web.ViewModels.Offer;
 
 namespace CarPortal.Web.ViewModels.FilterCar
 {
-	public class FilterCarCarViewModel
+    public class FilterCarCarViewModel
 	{
         [ForeignKey(nameof(Model))]
 		public int? ModelId { get; set; }

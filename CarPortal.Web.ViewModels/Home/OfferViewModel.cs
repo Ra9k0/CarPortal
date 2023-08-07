@@ -1,6 +1,6 @@
 ﻿
 using CarPortal.Data.Models;
-using CarPortal.Web.ViewModels.AddOffer;
+using CarPortal.Web.ViewModels.Offer;
 
 namespace CarPortal.Web.ViewModels.Home
 {

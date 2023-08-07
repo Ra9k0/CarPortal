@@ -109,7 +109,7 @@
 	@foreach (var item in ViewBag.LikedOffers)
 	{
 		<div class="card">
-			<form method="post" action="@Url.Action("Dislike", "Profile", new { id = item.Id })">
+			<form id="remove-form" method="post" action="@Url.Action("Dislike", "Profile", new { id = item.Id })">
 				<button class="remove-button" type="submit">-</button>
 			</form>
 			<a asp-controller="Offer" asp-action="Details" asp-route-offerId="@item.Id" class="text-decoration">

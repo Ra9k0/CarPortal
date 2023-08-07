@@ -1,15 +1,15 @@
 ﻿using CarPortal.Data;
 using CarPortal.Data.Models;
 using CarPortal.Services.Interfaces;
-using CarPortal.Web.ViewModels.AddOffer;
 using CarPortal.Web.ViewModels.FilterCar;
 using CarPortal.Web.ViewModels.Home;
+using CarPortal.Web.ViewModels.Offer;
 using CarPortal.Web.ViewModels.User;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarPortal.Services
 {
-	public class FilterCarService : IFilterCarService
+    public class FilterCarService : IFilterCarService
 	{
 		private readonly CarPortalDbContext dbContext;
 

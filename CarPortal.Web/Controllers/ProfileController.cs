@@ -32,7 +32,6 @@ namespace CarPortal.Web.Controllers
 		public IActionResult Dislike(Guid id)
 		{
 			profileService.Dislike(id, GetUserId());
-			
 
 			return RedirectToAction("LikedOffers");
 		}

@@ -1,4 +1,4 @@
-﻿using CarPortal.Web.ViewModels.AddOffer;
+﻿using CarPortal.Web.ViewModels.Offer;
 using System.ComponentModel.DataAnnotations;
 using System.Net.Mime;
 using CarPortal.Data.Models;

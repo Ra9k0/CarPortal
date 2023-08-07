@@ -1,12 +1,12 @@
 ﻿using CarPortal.Data.Models;
-using CarPortal.Web.ViewModels.AddOffer;
 using CarPortal.Web.ViewModels.FilterCar;
 using CarPortal.Web.ViewModels.Home;
+using CarPortal.Web.ViewModels.Offer;
 using CarPortal.Web.ViewModels.User;
 
 namespace CarPortal.Services.Interfaces
 {
-	public interface IFilterCarService
+    public interface IFilterCarService
 	{
 		Task<IEnumerable<OfferViewModel>> GetAllOffersAsync();
 

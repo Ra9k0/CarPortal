@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WLLSe0ZC+fuIwyHHyX+veUVrbRz5xDGVaGVPrTJng2Q=",
+  "Hash": "ikeXg2HBAAoatqGpNkVldha3jojx/IwPuRsYCELbRjU=",
   "Source": "CarPortal.Web",
   "BasePath": "_content/CarPortal.Web",
   "Mode": "Default",
@@ -2176,6 +2176,23 @@
       "OriginalItemSpec": "wwwroot\\OfferImages\\42b30059-9232-4588-883a-df05994e9469.jpg"
     },
     {
+      "Identity": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\OfferImages\\4bc0cd19-bcc5-4e76-8790-2fca25be1ecc.jpg",
+      "SourceId": "CarPortal.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\",
+      "BasePath": "_content/CarPortal.Web",
+      "RelativePath": "OfferImages/4bc0cd19-bcc5-4e76-8790-2fca25be1ecc.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\OfferImages\\4bc0cd19-bcc5-4e76-8790-2fca25be1ecc.jpg"
+    },
+    {
       "Identity": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\OfferImages\\619dcd72-477f-40db-abd4-ef5c98944b1c.jpg",
       "SourceId": "CarPortal.Web",
       "SourceType": "Discovered",
@@ -2191,6 +2208,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\OfferImages\\619dcd72-477f-40db-abd4-ef5c98944b1c.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\OfferImages\\66dd800c-ae83-4585-b232-4ad3f875f96a.jpg",
+      "SourceId": "CarPortal.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\",
+      "BasePath": "_content/CarPortal.Web",
+      "RelativePath": "OfferImages/66dd800c-ae83-4585-b232-4ad3f875f96a.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\OfferImages\\66dd800c-ae83-4585-b232-4ad3f875f96a.jpg"
     },
     {
       "Identity": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\OfferImages\\6bc010c5-cf4e-4f20-a815-77146b0a2631.jpg",

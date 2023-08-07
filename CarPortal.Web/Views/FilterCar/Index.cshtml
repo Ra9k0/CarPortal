@@ -120,8 +120,8 @@
 	/*Back-button*/
 
 	.btn-class-name {
-		--primary: 80,  180,  250;
-		--secondary: 255,  255,  255;
+		--primary: 80,   180,   250;
+		--secondary: 255,   255,   255;
 		background: #00587A;
 		border: none;
 		border-radius: .6em;
@@ -150,8 +150,8 @@
 	/*search-button*/
 
 	.btn-class-name-search {
-		--primary: 80,  180,  250;
-		--secondary: 255,  255,  255;
+		--primary: 80,   180,   250;
+		--secondary: 255,   255,   255;
 		background: #E7E7DE;
 		border: none;
 		border-radius: .6em;
@@ -270,6 +270,13 @@
 	@foreach (var item in ViewBag.CarsToShow)
 	{
 		<div class="card">
+			@if (User.IsInRole("Admin"))
+			{
+				<form method="get" asp-controller="Offer" asp-action="Edit" asp-route-id="@item.Id">
+					<button class="btn btn-primary" type="submit">Edit</button>
+				</form>
+				<button asp-controller="Offer" asp-action="Delete" asp-route-offerId="@item.Id" class="btn-danger" type="submit">Delete</button>
+			}
 			<a asp-controller="Offer" asp-action="Details" asp-route-offerId="@item.Id" class="text-decoration">
 				<div class="card__img">
 					<img src="@item.Images.PhotoPath" class="card-img-top" height="225px"/>
@@ -346,7 +353,6 @@ $(document).ready(function() {
     const checkbox = $(this).find("input.like");
     if (!checkbox.prop("checked")) {
       checkbox.prop("checked", true);
-      // Optional: Add any additional actions you want when the user likes.
     }
   });
 });

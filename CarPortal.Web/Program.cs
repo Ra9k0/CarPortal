@@ -43,7 +43,6 @@ namespace CarPortal.Web
 
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IHomeService, HomeService>();
-            builder.Services.AddScoped<IAddOfferService, AddOfferService>();
             builder.Services.AddScoped<IFilterCarService, FilterCarService>();
             builder.Services.AddScoped<IProfileService, ProfileService>();
             builder.Services.AddScoped<IOfferService, OfferService>();
