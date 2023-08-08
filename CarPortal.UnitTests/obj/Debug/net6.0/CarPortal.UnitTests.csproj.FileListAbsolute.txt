@@ -52,9 +52,6 @@ C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.UnitTests\bin\Debug\net6.0\M
 C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.UnitTests\bin\Debug\net6.0\Microsoft.TestPlatform.Utilities.dll
 C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.UnitTests\bin\Debug\net6.0\Microsoft.VisualStudio.TestPlatform.Common.dll
 C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.UnitTests\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
-C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.UnitTests\bin\Debug\net6.0\MockQueryable.Core.dll
-C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.UnitTests\bin\Debug\net6.0\MockQueryable.EntityFrameworkCore.dll
-C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.UnitTests\bin\Debug\net6.0\MockQueryable.Moq.dll
 C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.UnitTests\bin\Debug\net6.0\Moq.dll
 C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.UnitTests\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.UnitTests\bin\Debug\net6.0\NuGet.Frameworks.dll
@@ -164,3 +161,7 @@ C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.UnitTests\obj\Debug\net6.0\r
 C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.UnitTests\obj\Debug\net6.0\CarPortal.UnitTests.pdb
 C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.UnitTests\obj\Debug\net6.0\CarPortal.UnitTests.genruntimeconfig.cache
 C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.UnitTests\obj\Debug\net6.0\ref\CarPortal.UnitTests.dll
+C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.UnitTests\bin\Debug\net6.0\System.Diagnostics.EventLog.dll
+C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.UnitTests\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Diagnostics.EventLog.Messages.dll
+C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.UnitTests\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Diagnostics.EventLog.dll
+C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.UnitTests\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll
