@@ -43,8 +43,22 @@ namespace CarPortal.UnitTests
 
 			var filterCarViewModel = new FilterCarViewModel
 			{
-				
-				Price = 200000,
+				Car = new FilterCarCarViewModel()
+				{
+					ConditionId = 1,
+					ColorId = 1,
+					EngineTypeId = 1,
+					ManufactureYear = 2000,
+					Model = new ModelViewModel()
+					{
+						Id = 1,
+						Name = "Giulia Quadrifoglio",
+						CategoryId = 1,
+						MakeId = 2
+					}
+				},
+				Price = 1,
+				RegionId = 2,
 			};
 
 			// Act

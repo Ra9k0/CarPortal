@@ -120,8 +120,8 @@
 	/*Back-button*/
 
 	.btn-class-name {
-		--primary: 80,   180,   250;
-		--secondary: 255,   255,   255;
+		--primary: 80,    180,    250;
+		--secondary: 255,    255,    255;
 		background: #00587A;
 		border: none;
 		border-radius: .6em;
@@ -150,8 +150,8 @@
 	/*search-button*/
 
 	.btn-class-name-search {
-		--primary: 80,   180,   250;
-		--secondary: 255,   255,   255;
+		--primary: 80,    180,    250;
+		--secondary: 255,    255,    255;
 		background: #E7E7DE;
 		border: none;
 		border-radius: .6em;
@@ -273,9 +273,11 @@
 			@if (User.IsInRole("Admin"))
 			{
 				<form method="get" asp-controller="Offer" asp-action="Edit" asp-route-id="@item.Id">
-					<button class="btn btn-primary" type="submit">Edit</button>
+					<button style="margin-left: 150px;" class="btn btn-primary" type="submit">Edit</button>
 				</form>
-				<button asp-controller="Offer" asp-action="Delete" asp-route-offerId="@item.Id" class="btn-danger" type="submit">Delete</button>
+				<form method="post" asp-controller="Offer" asp-action="Delete" asp-route-id="@item.Id">
+						<button style="margin-left: 141px;" class="btn btn-danger" type="submit">Delete</button>
+				</form>
 			}
 			<a asp-controller="Offer" asp-action="Details" asp-route-offerId="@item.Id" class="text-decoration">
 				<div class="card__img">

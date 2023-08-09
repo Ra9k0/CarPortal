@@ -23,11 +23,10 @@ namespace CarPortal.Web.Controllers
 		[AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-	        IEnumerable<OfferViewModel> offers = new List<OfferViewModel>();
-            if (User.Identity.IsAuthenticated)
+	        IEnumerable<OfferViewModel> offers = await homeService.GetOffersAsyncByRegion(Guid.Parse(GetUserId()));
+            if (User.Identity.IsAuthenticated && offers.Any())
             {
                 ApplicationUser? user = await homeService.GetApplicationUserAsync(Guid.Parse(GetUserId()));
-                offers = await homeService.GetOffersAsyncByRegion(Guid.Parse(GetUserId()));
                 if (user != null)
 				{
                     ViewBag.InfoMessage = $"The most recent offers in {homeService.GetRegionAsync(user.RegionId).Result.Name}!";

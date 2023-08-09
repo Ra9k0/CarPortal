@@ -201,6 +201,14 @@ namespace CarPortal.Services
 				}).FirstAsync(of => of.Id == Guid.Parse(offerId));
 		}
 
+		public async Task Delete(string offerId)
+		{
+			var offer = await dbContext.Offers.FindAsync(Guid.Parse(offerId));
+
+			dbContext.Remove(offer);
+			await dbContext.SaveChangesAsync();
+		}
+
 		private async Task<ICollection<Image>> GetImages(AddOfferViewModel offer)
 		{
 			List<Image> imagesList = new List<Image>();

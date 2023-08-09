@@ -94,6 +94,11 @@ namespace CarPortal.Web.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             [Required]
+            [RegularExpression(@"^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$",ErrorMessage = "Enter valid phone number.")]
+            [Display(Name = "Phone Number")]
+            public string PhoneNumber { get; set; }
+
+            [Required]
             [Display(Name = "RegionId")]
             public int RegionId { get; set; }
 
@@ -138,6 +143,7 @@ namespace CarPortal.Web.Areas.Identity.Pages.Account
                 user.RegionId = Input.RegionId;
                 user.FirstName = Input.FirstName;
                 user.LastName = Input.LastName;
+                user.PhoneNumber = Input.PhoneNumber;
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 await _userManager.AddToRoleAsync(user, "User");
