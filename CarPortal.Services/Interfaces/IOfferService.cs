@@ -1,10 +1,12 @@
 ﻿using CarPortal.Data.Models;
+using CarPortal.Web.ViewModels.Home;
 using CarPortal.Web.ViewModels.Offer;
 
 namespace CarPortal.Services.Interfaces
 {
     public interface IOfferService
 	{
+		Task<IEnumerable<OfferViewModel>> GetAllOffersAsync();
 		Task<OfferDetailsViewModel> GetOfferByIdAsync(string offerId);
 
 		Task EditOfferAsync(OfferEditViewModel offer);

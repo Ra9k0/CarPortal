@@ -1,0 +1,12 @@
+C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.Web.Infrastructure\bin\Debug\net6.0\CarPortal.Web.Infrastructure.deps.json
+C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.Web.Infrastructure\bin\Debug\net6.0\CarPortal.Web.Infrastructure.dll
+C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.Web.Infrastructure\bin\Debug\net6.0\CarPortal.Web.Infrastructure.pdb
+C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.Web.Infrastructure\obj\Debug\net6.0\CarPortal.Web.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.Web.Infrastructure\obj\Debug\net6.0\CarPortal.Web.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.Web.Infrastructure\obj\Debug\net6.0\CarPortal.Web.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.Web.Infrastructure\obj\Debug\net6.0\CarPortal.Web.Infrastructure.AssemblyInfo.cs
+C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.Web.Infrastructure\obj\Debug\net6.0\CarPortal.Web.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.Web.Infrastructure\obj\Debug\net6.0\CarPortal.Web.Infrastructure.dll
+C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.Web.Infrastructure\obj\Debug\net6.0\refint\CarPortal.Web.Infrastructure.dll
+C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.Web.Infrastructure\obj\Debug\net6.0\CarPortal.Web.Infrastructure.pdb
+C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.Web.Infrastructure\obj\Debug\net6.0\ref\CarPortal.Web.Infrastructure.dll

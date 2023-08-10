@@ -21,6 +21,24 @@ namespace CarPortal.Services
 			this.dbContext = dbContext;
 		}
 
+		public async Task<IEnumerable<OfferViewModel>> GetAllOffersAsync()
+		{
+			return await dbContext.Offers.Select(of =>
+				new OfferViewModel()
+				{
+					Id = of.Id,
+					CarId = of.CarId,
+					Images = of.Images.First(),
+					Price = of.Price,
+					CreatedOn = of.CreatedOn,
+					Description = of.Description,
+					Title = of.Title,
+					OwnerId = of.OwnerId,
+					Car = of.Car,
+					Owner = of.Owner
+				}).OrderByDescending(of => of.CreatedOn).ToListAsync();
+		}
+
 		public async Task<OfferDetailsViewModel> GetOfferByIdAsync(string offerId)
 		{
 			return await dbContext.Offers.Select(of =>
@@ -34,8 +52,20 @@ namespace CarPortal.Services
 					Description = of.Description,
 					Title = of.Title,
 					OwnerId = of.OwnerId,
-					Car = of.Car,
-					Owner = of.Owner
+					Car = new Car()
+					{
+						Color = of.Car.Color,
+						Condition = of.Car.Condition,
+						EngineType = of.Car.EngineType,
+						ManufactureYear = of.Car.ManufactureYear,
+						Model = new Model()
+						{
+							Category = of.Car.Model.Category,
+							Make = of.Car.Model.Make,
+							Name = of.Car.Model.Name,
+						}
+					},
+					Owner = of.Owner,
 				}).FirstAsync(of => of.Id == Guid.Parse(offerId));
 		}
 

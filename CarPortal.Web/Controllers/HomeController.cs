@@ -23,21 +23,27 @@ namespace CarPortal.Web.Controllers
 		[AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-	        IEnumerable<OfferViewModel> offers = await homeService.GetOffersAsyncByRegion(Guid.Parse(GetUserId()));
-            if (User.Identity.IsAuthenticated && offers.Any())
+	        if (User.IsInRole("Admin"))
+	        {
+		        return RedirectToAction("Index", "Home", new { area = "Admin" });
+	        }
+	        if (User.Identity.IsAuthenticated)
             {
-                ApplicationUser? user = await homeService.GetApplicationUserAsync(Guid.Parse(GetUserId()));
-                if (user != null)
+	            IEnumerable<OfferViewModel> offersAuth = await homeService.GetOffersAsyncByRegion(Guid.Parse(GetUserId()));
+				ApplicationUser? user = await homeService.GetApplicationUserAsync(Guid.Parse(GetUserId()));
+                if (user != null && offersAuth.Any())
 				{
                     ViewBag.InfoMessage = $"The most recent offers in {homeService.GetRegionAsync(user.RegionId).Result.Name}!";
                 }
-			}
-            else
-            {
-	            ViewBag.InfoMessage = $"The most recent offers!";
-	            offers = await homeService.GetOffersAsync();
+                else
+                {
+					ViewBag.InfoMessage = $"The most recent offers!";
+				}
+                return View(offersAuth);
             }
-            return View(offers);
+            ViewBag.InfoMessage = $"The most recent offers!";
+			IEnumerable<OfferViewModel>  offersNotAuth = await homeService.GetOffersAsync();
+            return View(offersNotAuth);
 		}
 
 

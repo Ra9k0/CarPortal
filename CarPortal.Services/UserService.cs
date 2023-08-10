@@ -1,4 +1,5 @@
 ﻿using CarPortal.Data;
+using CarPortal.Data.Models;
 using CarPortal.Services.Interfaces;
 using CarPortal.Web.ViewModels.User;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +24,19 @@ namespace CarPortal.Services
             }).ToListAsync();
 
             return regions;
+        }
+
+        public async Task<IEnumerable<ApplicationUser>> GetAllUsersAsync()
+        {
+	        return await dbContext.Users.Select(u => new ApplicationUser()
+	        {
+                Id = u.Id,
+                Email = u.Email,
+                FirstName = u.FirstName,
+                LastName = u.LastName,
+                Region = u.Region,
+                PhoneNumber = u.PhoneNumber,
+	        }).ToListAsync();
         }
     }
 }

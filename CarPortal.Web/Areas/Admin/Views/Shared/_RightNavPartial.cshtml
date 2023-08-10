@@ -1,0 +1,21 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using CarPortal.Data.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<ul class="navbar-nav">
+	<Li>
+		<a asp-controller="Offer" asp-action="Add" class="btn btn-primary">+ Add Offer</a>
+	</Li>
+	<div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+					<button type="submit" class="nav-link btn btn-link text-white">Logout</button>
+				</form>
+			</li>
+		</ul>
+	</div>
+
+</ul>
+

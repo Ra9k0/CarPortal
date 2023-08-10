@@ -1,0 +1,42 @@
+﻿@using CarPortal.Web.Infrastructure.Middlewares
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Full Name</th>
+            <th>Phone Number</th>
+            <th>Region</th>
+            <th>Is Admin</th>
+            <th>Is Online</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in ViewBag.Users)
+        {
+            <tr>
+                <td>@user.Email</td>
+                <td>@user.FirstName @user.LastName</td>
+                <td>@user.PhoneNumber</td>
+	            <td>@user.Region.Name</td>
+	            <td>@user.Region.Name</td>
+	            <td>
+		            @if (OnlineUsersMiddleware.CheckIfUserIsOnline(user.Id.ToString()))
+		            {
+			            <label>✔</label>
+		            }
+		            else
+		            {
+			            <label class="text-center">❌</label>
+		            }
+	            </td>
+                @*<td>@user.IsAdmin</td>
+                <td>@user.IsOnline</td>
+                <td>
+                    <button class="btn btn-primary" onclick="makeAdmin('@user.Id')">Make Admin</button>
+                    <button class="btn btn-success" onclick="toggleOnline('@user.Id', @user.IsOnline')">Toggle Online</button>
+                </td>*@
+            </tr>
+        }
+    </tbody>
+</table>

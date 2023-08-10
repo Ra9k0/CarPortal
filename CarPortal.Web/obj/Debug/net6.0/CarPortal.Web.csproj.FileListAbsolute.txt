@@ -798,3 +798,8 @@ C:\Users\21_1\Documents\GitHub\CarPortal\CarPortal.Web\obj\Debug\net6.0\CarPorta
 C:\Users\21_1\Documents\GitHub\CarPortal\CarPortal.Web\obj\Debug\net6.0\CarPortal.Web.genruntimeconfig.cache
 C:\Users\21_1\Documents\GitHub\CarPortal\CarPortal.Web\obj\Debug\net6.0\ref\CarPortal.Web.dll
 C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.Web\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.Google.dll
+C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.Web\bin\Debug\net6.0\CarPortal.Web.Infrastructure.dll
+C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.Web\bin\Debug\net6.0\CarPortal.Web.Infrastructure.pdb
+C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.Web\bin\Debug\net6.0\Microsoft.AspNetCore.Server.Kestrel.Https.dll
+C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.Web\bin\Debug\net6.0\Microsoft.AspNetCore.Server.Kestrel.Transport.Abstractions.dll
+C:\Users\rstam\Documents\GitHub\CarPortal\CarPortal.Web\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll

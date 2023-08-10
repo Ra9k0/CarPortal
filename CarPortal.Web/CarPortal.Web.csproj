@@ -17,14 +17,19 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.15" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CarPortal.Common\CarPortal.Common.csproj" />
     <ProjectReference Include="..\CarPortal.Data\CarPortal.Data.csproj" />
     <ProjectReference Include="..\CarPortal.Services\CarPortal.Services.csproj" />
+    <ProjectReference Include="..\CarPortal.Web.Infrastructure\CarPortal.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\CarPortal.Web.ViewModels\CarPortal.Web.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
 
 </Project>

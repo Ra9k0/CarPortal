@@ -1,0 +1,13 @@
+﻿@{
+	ViewData["Title"] = "Admin Home";
+}
+<body style="background-color: #61677A">
+<div class="mt-4 p-5 text-center" style="background-color: #D8D9DA ">
+	<h2 class="display-4">Hello, Admin!</h2>
+	<hr class="my-4">
+	<a asp-area="Admin" asp-controller="Offer" asp-action="All"
+	   class="btn btn-primary btn-lg">All Offers</a>
+	<a asp-area="Admin" asp-controller="User" asp-action="All"
+	   class="btn btn-primary btn-lg">All Users</a>
+</div>
+</body>

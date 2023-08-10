@@ -2,9 +2,9 @@ using CarPortal.Data;
 using CarPortal.Data.Models;
 using CarPortal.Services;
 using CarPortal.Services.Interfaces;
+using CarPortal.Web.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace CarPortal.Web
 {
@@ -69,10 +69,26 @@ namespace CarPortal.Web
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.MapDefaultControllerRoute();
-            app.MapRazorPages();
+            app.EnableOnlineUsersCheck();
 
-            using (var scope = app.Services.CreateScope())
+            app.UseEndpoints(config =>
+			{
+				config.MapControllerRoute(
+					name: "areas",
+					pattern: "/{area:exists}/{controller=Home}/{action=Index}/{id?}"
+				);
+
+				config.MapControllerRoute(
+					name: "ProtectingUrlRoute",
+					pattern: "/{controller}/{action}/{id}/{information}",
+					defaults: new { Controller = "Home", Action = "Index" });
+
+				config.MapDefaultControllerRoute();
+
+				config.MapRazorPages();
+			});
+
+			using (var scope = app.Services.CreateScope())
             {
 	            var roleManager =
 		            scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole<Guid>>>();

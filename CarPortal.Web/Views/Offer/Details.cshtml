@@ -152,12 +152,44 @@
 			</form>
 		</div>
 	</div>
-		<div style="margin-bottom: 20px; margin-left: 20px;">
+	<div style="margin-bottom: 20px; margin-left: 20px;">
 		<h2 style="margin-bottom: 15px; color: #00587A">@ViewBag.Offer.Price lv.</h2>
 	</div>
 	<div style="margin-left: 20px; margin-top: 20px; margin-right: 20px">
 		<h3>@ViewBag.Offer.Description</h3>
 	</div>
+	<table class="table table-striped justify-content-center" style="margin-left: 375px; margin-top: 25px; width: 500px">
+		<tbody>
+		<tr>
+			<th scope="col">Category</th>
+			<td>@ViewBag.Offer.Car.Model.Category.Name</td>
+		</tr>
+		<tr>
+			<th scope="row">Make</th>
+			<td>@ViewBag.Offer.Car.Model.Make.Name</td>
+		</tr>
+		<tr>
+			<th scope="row">Model</th>
+			<td>@ViewBag.Offer.Car.Model.Name</td>
+		</tr>
+		<tr>
+			<th scope="row">EngineType</th>
+			<td>@ViewBag.Offer.Car.EngineType.Type</td>
+		</tr>
+		<tr>
+			<th scope="row">Year of manufacture</th>
+			<td>@ViewBag.Offer.Car.ManufactureYear</td>
+		</tr>
+		<tr>
+			<th scope="row">Color</th>
+			<td>@ViewBag.Offer.Car.Color.Name</td>
+		</tr>
+		<tr>
+			<th scope="row">Condition</th>
+			<td>@ViewBag.Offer.Car.Condition.Name</td>
+		</tr>
+		</tbody>
+	</table>
 </div>
 
 </body>
