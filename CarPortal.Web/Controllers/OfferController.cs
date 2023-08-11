@@ -14,33 +14,59 @@ public class OfferController : BaseController
 		this.offerService = offerService;
 	}
 
+	[AllowAnonymous]
 	public async Task<IActionResult> Details(string offerId)
 	{
 		ViewBag.Offer = await offerService.GetOfferByIdAsync(offerId);
 		return View();
 	}
 
-	[Authorize(Roles = "Admin")]
 	[HttpPost]
 	public async Task<IActionResult> Delete(string id)
 	{
-		await offerService.Delete(id);
-		return RedirectToAction("Index", "FilterCar");
+		try
+		{
+
+			bool isAdmin = User.IsInRole("Admin");
+			await offerService.Delete(id, GetUserId(),isAdmin);
+			if (User.IsInRole("Admin"))
+			{
+				return RedirectToAction("All", "Offer", new { area = "Admin" });
+			}
+			return RedirectToAction("MyOffers", "Profile");
+		}
+		catch (Exception ex)
+		{
+			TempData["ErrorMessage"] = ex.Message;
+			return RedirectToAction("Index", "Home");
+		}
 	}
 
-	[Authorize(Roles = "Admin")]
 	[HttpGet]
 	public async Task<IActionResult> Edit(string id)
 	{
-		ViewBag.Categories = await offerService.GetAllCategoriesAsync();
-		ViewBag.Offer = await offerService.GetOfferForEditByIdAsync(id);
-		return View();
+		try
+		{
+			ViewBag.Categories = await offerService.GetAllCategoriesAsync();
+			bool isAdmin = User.IsInRole("Admin");
+			ViewBag.Offer = await offerService.GetOfferForEditByIdAsync(id, GetUserId(),isAdmin);
+			return View();
+		}
+		catch (Exception ex)
+		{
+			TempData["ErrorMessage"] = ex.Message;
+			return RedirectToAction("Index", "Home");
+		}
 	}
 
 	[HttpPost]
 	public async Task<IActionResult> Edit(OfferEditViewModel offer)
 	{
 		await offerService.EditOfferAsync(offer);
+		if (User.IsInRole("Admin"))
+		{
+			return RedirectToAction("All", "Offer", new { area = "Admin" });
+		}
 		return RedirectToAction("Index", "FilterCar");
 	}
 
@@ -55,7 +81,7 @@ public class OfferController : BaseController
 	public IActionResult Add(AddOfferViewModel offer)
 	{
 		offerService.CreateOffer(offer, Guid.Parse(GetUserId()));
-		return Redirect("Profile/MyOffers");
+		return RedirectToAction("MyOffers","Profile");
 	}
 
 	public async Task<JsonResult> GetModelsList(int id, int categoryId)

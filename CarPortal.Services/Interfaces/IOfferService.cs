@@ -27,7 +27,7 @@ namespace CarPortal.Services.Interfaces
 
 		void CreateOffer(AddOfferViewModel offer, Guid userId);
 
-		Task<OfferEditViewModel> GetOfferForEditByIdAsync(string offerId);
-		Task Delete(string offerId);
+		Task<OfferEditViewModel> GetOfferForEditByIdAsync(string offerId, string id, bool isAdmin);
+		Task Delete(string offerId, string id, bool isAdmin);
 	}
 }

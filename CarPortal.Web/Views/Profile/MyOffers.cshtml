@@ -95,6 +95,12 @@
 	@foreach (var item in ViewBag.MyOffers)
 	{
 		<div class="card">
+			<form method="get"asp-controller="Offer" asp-action="Edit" asp-route-id="@item.Id">
+				<button type="submit" class="btn btn-primary">Edit</button>
+			</form>
+			<form method="post"asp-controller="Offer" asp-action="Delete" asp-route-id="@item.Id">
+				<button type="submit" class="btn btn-danger">Delete</button>
+			</form>
 			<a asp-controller="Offer" asp-action="Details" asp-route-offerId="@item.Id" class="text-decoration">
 				<div class="card__img">
 					<img src="~/@item.Images.PhotoPath" class="card-img-top" height="225px"/>

@@ -23,7 +23,12 @@ namespace CarPortal.Web.Controllers
 		[AllowAnonymous]
         public async Task<IActionResult> Index()
         {
-	        if (User.IsInRole("Admin"))
+	        if (TempData.TryGetValue("ErrorMessage", out var errorMessage))
+	        {
+		        ViewBag.ErrorMessage = errorMessage!;
+	        }
+
+			if (User.IsInRole("Admin"))
 	        {
 		        return RedirectToAction("Index", "Home", new { area = "Admin" });
 	        }
@@ -37,6 +42,7 @@ namespace CarPortal.Web.Controllers
                 }
                 else
                 {
+	                offersAuth =await homeService.GetOffersAsync();
 					ViewBag.InfoMessage = $"The most recent offers!";
 				}
                 return View(offersAuth);

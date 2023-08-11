@@ -5,6 +5,7 @@ using CarPortal.Services.Interfaces;
 using CarPortal.Web.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CarPortal.Web
 {
@@ -39,7 +40,9 @@ namespace CarPortal.Web
 	            .AddRoles<IdentityRole<Guid>>()
 				.AddEntityFrameworkStores<CarPortalDbContext>();
 
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews().AddMvcOptions(options=>
+	            options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>()
+	            );
 
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IHomeService, HomeService>();

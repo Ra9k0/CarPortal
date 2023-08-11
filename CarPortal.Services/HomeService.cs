@@ -33,7 +33,7 @@ namespace CarPortal.Services
 						OwnerId = of.OwnerId,
 						Car = of.Car,
 						Owner = of.Owner
-					}).Take(3).OrderByDescending(of=>of.CreatedOn).ToListAsync();
+					}).OrderByDescending(of => of.CreatedOn).Take(3).ToListAsync();
 		}
 
 		public async Task<IEnumerable<OfferViewModel>> GetOffersAsync()
@@ -51,7 +51,7 @@ namespace CarPortal.Services
 					OwnerId = of.OwnerId,
 					Car = of.Car,
 					Owner = of.Owner
-				}).Take(3).OrderByDescending(of => of.CreatedOn).ToListAsync();
+				}).OrderByDescending(of => of.CreatedOn).Take(3).ToListAsync();
 		}
 
 		public async Task<ApplicationUser?> GetApplicationUserAsync(Guid id)

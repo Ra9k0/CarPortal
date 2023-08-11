@@ -65,7 +65,13 @@ namespace CarPortal.Services
 							Name = of.Car.Model.Name,
 						}
 					},
-					Owner = of.Owner,
+					Owner = new ApplicationUser()
+					{
+						FirstName = of.Owner.FirstName,
+						LastName = of.Owner.LastName,
+						PhoneNumber = of.Owner.PhoneNumber,
+						Region = of.Owner.Region,
+					},
 				}).FirstAsync(of => of.Id == Guid.Parse(offerId));
 		}
 
@@ -204,9 +210,9 @@ namespace CarPortal.Services
 
 		}
 
-		public async Task<OfferEditViewModel> GetOfferForEditByIdAsync(string offerId)
+		public async Task<OfferEditViewModel> GetOfferForEditByIdAsync(string offerId, string userId,bool isAdmin)
 		{
-			return await dbContext.Offers.Select(of =>
+			var offer = await dbContext.Offers.Select(of =>
 				new OfferEditViewModel()
 				{
 					Id = of.Id,
@@ -227,14 +233,36 @@ namespace CarPortal.Services
 					ColorName = of.Car.Color.Name,
 					ConditionName = of.Car.Condition.Name,
 					EngineTypeName = of.Car.EngineType.Type,
+					OwnerId = of.OwnerId,
 
 				}).FirstAsync(of => of.Id == Guid.Parse(offerId));
+			if (!isAdmin)
+			{
+				if (offer == null)
+				{
+					throw new InvalidOperationException($"Offer with ID {offerId} not found.");
+				}
+
+				if (offer.OwnerId != Guid.Parse(userId))
+				{
+					throw new UnauthorizedAccessException("You are not authorized to access this offer.");
+				}
+			}
+
+			return offer;
+
 		}
 
-		public async Task Delete(string offerId)
+		public async Task Delete(string offerId, string userId, bool isAdmin)
 		{
 			var offer = await dbContext.Offers.FindAsync(Guid.Parse(offerId));
-
+			if (offer.OwnerId != Guid.Parse(userId))
+			{
+				if (!isAdmin)
+				{
+					throw new UnauthorizedAccessException("You are not authorized to delete this offer.");
+				}
+			}
 			dbContext.Remove(offer);
 			await dbContext.SaveChangesAsync();
 		}

@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\CarPortal.Web.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\OfferImages\\04472f12-6da8-4593-951d-3e808f0befbc.jpg",
+      "PackagePath": "staticwebassets\\OfferImages\\04472f12-6da8-4593-951d-3e808f0befbc.jpg"
+    },
+    {
       "Id": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\OfferImages\\15a00583-4289-4f8f-97a5-92d64e6797de.jpg",
       "PackagePath": "staticwebassets\\OfferImages\\15a00583-4289-4f8f-97a5-92d64e6797de.jpg"
     },
@@ -33,8 +37,20 @@
       "PackagePath": "staticwebassets\\OfferImages\\66dd800c-ae83-4585-b232-4ad3f875f96a.jpg"
     },
     {
+      "Id": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\OfferImages\\66fed691-a0aa-42d9-bd72-1995cd209235.jpg",
+      "PackagePath": "staticwebassets\\OfferImages\\66fed691-a0aa-42d9-bd72-1995cd209235.jpg"
+    },
+    {
       "Id": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\OfferImages\\6bc010c5-cf4e-4f20-a815-77146b0a2631.jpg",
       "PackagePath": "staticwebassets\\OfferImages\\6bc010c5-cf4e-4f20-a815-77146b0a2631.jpg"
+    },
+    {
+      "Id": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\OfferImages\\6d2717c8-41d0-45e3-afff-426b29c70039.jpg",
+      "PackagePath": "staticwebassets\\OfferImages\\6d2717c8-41d0-45e3-afff-426b29c70039.jpg"
+    },
+    {
+      "Id": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\OfferImages\\7241413d-82ce-47a4-85fb-4b5e7729e32a.jpg",
+      "PackagePath": "staticwebassets\\OfferImages\\7241413d-82ce-47a4-85fb-4b5e7729e32a.jpg"
     },
     {
       "Id": "C:\\Users\\rstam\\Documents\\GitHub\\CarPortal\\CarPortal.Web\\wwwroot\\OfferImages\\9f9606e3-5f72-4af9-b3df-e403e3bb1f1a.jpg",

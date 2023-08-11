@@ -3,93 +3,169 @@
 @model RegisterModel
 @inject IUserService Service
 @{
-    ViewData["Title"] = "Register";
+	ViewData["Title"] = "Register";
 }
 
+<style>
+	body {
+		background: #009579;
+		min-height: 100vh;
+		width: 100%;
+	}
 
-<h1>@ViewData["Title"]</h1>
+	.container {
+		background: #fff;
+		border-radius: 7px;
+		box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+		left: 50%;
+		max-width: 430px;
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 100%;
+	}
 
-<div class="row">
-    <div class="col-md-4">
-        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Create a new account.</h2>
-            <hr />
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-floating">
-	            <input asp-for="Input.FirstName" class="form-control" autocomplete="first-name" aria-required="true" />
-	            <label asp-for="Input.FirstName"></label>
-	            <span asp-validation-for="Input.FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-	            <input asp-for="Input.LastName" class="form-control" autocomplete="last-name" aria-required="true" />
-                <label asp-for="Input.LastName"></label>
-                <span asp-validation-for="Input.LastName" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-	            <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
-	            <label asp-for="Input.Email"></label>
-	            <span asp-validation-for="Input.Email" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.PhoneNumber" class="form-control" autocomplete="phone-number" aria-required="true" />
-                <label asp-for="Input.PhoneNumber"></label>
-                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
-                <label asp-for="Input.Password"></label>
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-	            <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
-	            <label asp-for="Input.ConfirmPassword"></label>
-	            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-            </div>
-            <div>
-                <select asp-for="Input.RegionId" class="form-select" aria-label="Region">
-                    <option selected>Select Region</option>
-                    @foreach (var region in @Service.GetRegionsAsync().Result)
-                    {
-                        <option value="@region.Id">@region.Name</option>
-                    }
-                    <span asp-validation-for="Input.RegionId" class="text-danger"></span>
-                </select>
-            </div>
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
-        </form>
-    </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h3>Use another service to register.</h3>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
-                        </p>
-                    </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins!)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
-                        </div>
-                    </form>
-                }
-            }
-        </section>
-    </div>
+	.container .registration { display: none; }
+
+	#check:checked ~ .registration { display: block; }
+
+	#check:checked ~ .login { display: none; }
+
+	#check { display: none; }
+
+	.container .form { padding: 2rem; }
+
+	.form header {
+		font-size: 2rem;
+		font-weight: 500;
+		margin-bottom: 1.5rem;
+		text-align: center;
+	}
+
+	.form input {
+		border: 1px solid #ddd;
+		border-radius: 6px;
+		font-size: 17px;
+		height: 60px;
+		margin-top: 15px;
+		outline: none;
+		padding: 0 15px;
+		width: 100%;
+	}
+
+	.form input:focus { box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2); }
+
+	.form a {
+		color: #009579;
+		font-size: 16px;
+		text-decoration: none;
+	}
+
+	.form a:hover { text-decoration: underline; }
+
+	.form input.button {
+		background: #009579;
+		color: #fff;
+		cursor: pointer;
+		font-size: 1.2rem;
+		font-weight: 500;
+		letter-spacing: 1px;
+		margin-top: 1.7rem;
+		transition: 0.4s;
+	}
+
+	.form input.button:hover { background: #006653; }
+
+	.signup {
+		font-size: 17px;
+		text-align: center;
+	}
+
+	.signup label {
+		color: #009579;
+		cursor: pointer;
+	}
+
+	.signup label:hover { text-decoration: underline; }
+</style>
+
+<body>
+<div class="container">
+	<input type="checkbox" id="check">
+	<div class="login form">
+		<header>Register</header>
+		<form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+			<h2>Create a new account.</h2>
+			<hr/>
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-floating">
+				<input asp-for="Input.FirstName" class="form-control" autocomplete="first-name" aria-required="true"/>
+				<label asp-for="Input.FirstName"></label>
+				<span asp-validation-for="Input.FirstName" class="text-danger"></span>
+			</div>
+			<div class="form-floating">
+				<input asp-for="Input.LastName" class="form-control" autocomplete="last-name" aria-required="true"/>
+				<label asp-for="Input.LastName"></label>
+				<span asp-validation-for="Input.LastName" class="text-danger"></span>
+			</div>
+			<div class="form-floating">
+				<input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true"/>
+				<label asp-for="Input.Email"></label>
+				<span asp-validation-for="Input.Email" class="text-danger"></span>
+			</div>
+			<div class="form-floating">
+				<input asp-for="Input.PhoneNumber" class="form-control" autocomplete="phone-number" aria-required="true"/>
+				<label asp-for="Input.PhoneNumber"></label>
+				<span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+			</div>
+			<div class="form-floating">
+				<input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true"/>
+				<label asp-for="Input.Password"></label>
+				<span asp-validation-for="Input.Password" class="text-danger"></span>
+			</div>
+			<div class="form-floating">
+				<input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true"/>
+				<label asp-for="Input.ConfirmPassword"></label>
+				<span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+			</div>
+			<div style="margin-top: 15px;">
+				<select asp-for="Input.RegionId" class="form-select" aria-label="Region">
+					<option selected>Select Region</option>
+					@foreach (var region in Service.GetRegionsAsync().Result)
+					{
+						<option value="@region.Id">@region.Name</option>
+					}
+					<span asp-validation-for="Input.RegionId" class="text-danger"></span>
+				</select>
+			</div>
+			<button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary" style="margin-top: 15px; margin-bottom: 15px;">Register</button>
+		</form>
+		<form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+			<div>
+				<p>
+					@foreach (var provider in Model.ExternalLogins!)
+					{
+						<button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+					}
+				</p>
+			</div>
+		</form>
+			<div class="signup">
+				<span class="signup">
+					Already have an account?
+					<label for="check">
+						<div>
+							<p>
+								<a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Login</a>
+							</p>
+						</div>
+					</label>
+				</span>
+			</div>
+	</div>
 </div>
+</body>
 
 @section Scripts {
-    <partial name="_ValidationScriptsPartial" />
+	<partial name="_ValidationScriptsPartial"/>
 }

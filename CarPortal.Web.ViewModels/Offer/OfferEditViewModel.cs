@@ -26,6 +26,8 @@ namespace CarPortal.Web.ViewModels.Offer
 		public CarViewModel Car { get; set; } = null!;
 		public Model Model { get; set; } = null!;
 
+		public Guid OwnerId { get; set; }
+
 		public string CategoryName { get; set; } = null!;
 
 		public string MakeName { get; set; } = null!;

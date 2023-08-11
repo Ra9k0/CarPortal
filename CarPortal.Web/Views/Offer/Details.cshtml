@@ -192,6 +192,39 @@
 	</table>
 </div>
 
+<div class="details-card" style="margin-top:75px">
+	<div style="margin-top: 20px; margin-left: 40px; margin-right: 40px">
+		<h1>Owner</h1>
+		<div class="row">
+			<h2 class="text-start col">
+				@ViewBag.Offer.Owner.FirstName @ViewBag.Offer.Owner.LastName
+			</h2>
+			<h2 class="text-center col">
+				@ViewBag.Offer.Owner.Region.Name
+			</h2>
+			@if (!User.Identity.IsAuthenticated)
+			{
+				<div class="col text-end" style="margin-bottom: 50px;">
+					<h6 class="text-danger">
+						Login/Register to see the phone number!
+					</h6>
+					<div class="row">
+						<h2 class="col" style="color: transparent; text-shadow: 0 0 12px #000;">
+							@ViewBag.Offer.Owner.PhoneNumber
+						</h2>
+					</div>
+				</div>
+			}
+			else
+			{
+				<h2 class="text-end col">
+					@ViewBag.Offer.Owner.PhoneNumber
+				</h2>
+			}
+		</div>
+	</div>
+</div>
+
 </body>
 
 <script>

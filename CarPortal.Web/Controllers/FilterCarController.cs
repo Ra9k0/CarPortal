@@ -1,6 +1,7 @@
 ﻿using CarPortal.Services;
 using CarPortal.Services.Interfaces;
 using CarPortal.Web.ViewModels.FilterCar;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
@@ -16,6 +17,7 @@ namespace CarPortal.Web.Controllers
 		}
 
 		[HttpGet]
+		[AllowAnonymous]
 		public async Task<IActionResult> Index()
 		{
 			ViewBag.CarsToShow = await filterCarService.GetAllOffersAsync();
@@ -28,6 +30,7 @@ namespace CarPortal.Web.Controllers
 		}
 
 		[HttpPost]
+		[AllowAnonymous]
 		public async Task<IActionResult> Index(FilterCarViewModel filter, string orderer)
 		{
 			ViewBag.CarsToShow = await filterCarService.FilteredOffers(filter,orderer);
